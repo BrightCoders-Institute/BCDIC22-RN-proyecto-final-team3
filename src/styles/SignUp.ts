@@ -1,16 +1,20 @@
 import { StyleSheet } from 'react-native';
+import { ISignUpContext } from '../types/SignUp';
 
-export const screen = {
-	style: StyleSheet.create({
-		container: {
-			flex: 1,
-			backgroundColor: '#fff',
-			alignItems: 'center',
-			justifyContent: 'center',
+export default (context: ISignUpContext) => {
+	return {
+		screen: {
+			style: StyleSheet.create({
+				container: {
+					flex: 1,
+					backgroundColor: context.colors.primary,
+					alignItems: 'center',
+					justifyContent: 'center',
+				},
+				text: {
+					color: context.colors.text,
+				},
+			}),
 		},
-	}),
-};
-
-export default {
-	screen,
+	};
 };

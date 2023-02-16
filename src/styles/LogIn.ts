@@ -1,16 +1,20 @@
 import { StyleSheet } from 'react-native';
+import { ILogInContext } from '../types/LogIn';
 
-export const screen = {
-	style: StyleSheet.create({
-		container: {
-			flex: 1,
-			backgroundColor: '#fff',
-			alignItems: 'center',
-			justifyContent: 'center',
+export default (context: ILogInContext) => {
+	return {
+		screen: {
+			style: StyleSheet.create({
+				container: {
+					flex: 1,
+					backgroundColor: context.colors.primary,
+					alignItems: 'center',
+					justifyContent: 'center',
+				},
+				text: {
+					color: context.colors.text,
+				},
+			}),
 		},
-	}),
-};
-
-export default {
-	screen,
+	};
 };
