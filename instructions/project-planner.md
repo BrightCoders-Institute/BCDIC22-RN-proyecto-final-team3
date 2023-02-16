@@ -20,7 +20,7 @@ Instrucciones para la creación de un GitHub Project
 
 ## 01 Apartado de proyectos de github
 
-Desde la página inicial de tu repositorio, seleccionar el apartado de  `Projects`
+Desde la página inicial de tu repositorio, seleccionar el apartado de `Projects`
 
 ![01](img/01.png)
 
@@ -38,19 +38,19 @@ De la columna izquierda seleccionar el template `Feature` y crear el proyecto
 
 ## 04 Configuración del proyecto
 
-En la esquina superior derecha, en el menú  botón que tiene 3 puntos, seleccionar la opción `settings` 
+En la esquina superior derecha, en el menú botón que tiene 3 puntos, seleccionar la opción `settings`
 
 ![04](img/04.png)
 
 ## 05 Nombre del proyecto
 
-En la pantalla de configuración, asigna un nombre a tu proyecto. El nombre de tu proyecto debe ser único por lo que elegir un nombre que  es común al te otros equipos o generaciones como `Reloj Checador` ó `Equipo 1`, __no es aconsejable__. Puedes utilizar una combinación de el nombre de tu generación más algún distintivo, por ejemplo: `BCDIC22-Reloj Checador-Team 01`
+En la pantalla de configuración, asigna un nombre a tu proyecto. El nombre de tu proyecto debe ser único por lo que elegir un nombre que es común al te otros equipos o generaciones como `Reloj Checador` ó `Equipo 1`, **no es aconsejable**. Puedes utilizar una combinación de el nombre de tu generación más algún distintivo, por ejemplo: `BCDIC22-Reloj Checador-Team 01`
 
 ![05](img/05.png)
 
 ## 06 Configuración de estados
 
-En la misma pantalla de configuración, del lado izquierdo, selecciona el  apartado de `Status`, en la sección de `Options`, elimina la opción de `Ready` ya que ese estado no lo utilizaremos.
+En la misma pantalla de configuración, del lado izquierdo, selecciona el apartado de `Status`, en la sección de `Options`, elimina la opción de `Ready` ya que ese estado no lo utilizaremos.
 
 ![06](img/06.png)
 
@@ -61,7 +61,7 @@ En este paso, cambiaremos el concepto de iteraciones a sprint:
 - Cambia el campo `Field name` al valor de `Sprint`
 - Ajusta los nombres de las iteraciones a `Sprint 1` y `Sprint 2`
 - Ajusta las fechas para `Sprint 1` y `Sprint 2`. Toma enb cuenta que los sprint inician los `Lunes` y terminan los `Viernes`, `Sábado y Domingo` no se deben considerar.
-  
+
 ![07](img/07.png)
 
 ## 08 Ajuste en current iteration
@@ -79,7 +79,7 @@ Para que los cambios que realizaste en el paso anterior se conserven es necesari
 
 Para grabarlos, selecciona el menú de la pestaña y hasta la parte de abajo seleccionar la opción `Save changes`
 
-__IMPORTANTE:__ No confundir la opción `Save changes` con la opción `Save changes to  new view`,ya que tienen propósitos diferentes
+**IMPORTANTE:** No confundir la opción `Save changes` con la opción `Save changes to  new view`,ya que tienen propósitos diferentes
 
 ![09](img/09.png)
 
