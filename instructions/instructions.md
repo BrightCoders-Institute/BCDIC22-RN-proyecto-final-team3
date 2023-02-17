@@ -14,16 +14,16 @@
     - [\[ 08 \] GitHub Planner](#-08--github-planner)
   - [Definiciones](#definiciones)
   - [Recursos](#recursos)
-  
+
 # Proyecto Final
 
-  Atributo |  Valor
- --- | --- |
- Tipo | Colaborativo
- Estrategia | Collaborative
- Modo | Síncrono
- Dedicación | 180 horas
- Duración | 45 días
+| Atributo   | Valor         |
+| ---------- | ------------- |
+| Tipo       | Colaborativo  |
+| Estrategia | Collaborative |
+| Modo       | Síncrono      |
+| Dedicación | 180 horas     |
+| Duración   | 45 días       |
 
 ## Objetivos
 
@@ -38,12 +38,12 @@
    3. Una clonación de algún producto o servicio existente.
 2. Considerar que el proyecto sea retador, es decir, que el proceso de su desarrollo te deje además de un producto, aprendizajes
 3. El concepto sobre que se trabajará el proyecto es un MVP. Es decir un producto que incluye las características o funcionalidades mínimas necesarias para probar una idea o producto en una etapa temprana del ciclo de desarrollo.
-4. __BONUS__ Considera en tu proyecto parte de su funcionalidad trabajarla como una [API REST](https://guides.rubyonrails.org/api_app.html). Esto te servirá para aprender como una API REST utilizando Rails.
+4. **BONUS** Considera en tu proyecto parte de su funcionalidad trabajarla como una [API REST](https://guides.rubyonrails.org/api_app.html). Esto te servirá para aprender como una API REST utilizando Rails.
 5. Una vez que llegaron a un acuerdo deberán definir las características (funcionalidad) del prototipo a desarrollar, en este análisis se debe tomar en consideración el tiempo que tienen para desarrollarlo así como la velocidad y tamaño del equipo. No debe ser un listado muy detallado pero si claro de las ideas o funcionalidades propuestas. Para facilitar este proceso, procura organizarlas en [milestones](#definiciones) y para cada milestone puedes agregar alguna descripción para precisar algunos puntos.
 6. El siguiente paso, es crear un mockup o diseño básico de la UI de la aplicación. Entre otras cosas este diseño servirá para tener una mejor idea del esfuerzo que requerirán para desarrollar el proyecto para que con base en esto realicen ajustes de ser necesario. Puedes apoyarte en herramientas como [uizard](https://uizard.io/es/), [Figma](https://www.figma.com/) ó similares.
 7. También, necesitarás un modelo inicial para tu base de datos genera el modelo inicial utilizando una herramienta como [dbdiagram.io](https://dbdiagram.io/home) ó similar.
 8. Con el diseño, el equipo podrá iniciar a planear las tareas para su primer sprint. Antes de crear tus tareas asegúrate de crear y configurar el proyecto de GitHub [(ver instrucciones)](project-planner.md)
-9. Una vez planificado tu sprint inicia a codificar siguiendo nuestro [flujo de trabajo para el desarrollo ágil]((workflow.md))
+9. Una vez planificado tu sprint inicia a codificar siguiendo nuestro [flujo de trabajo para el desarrollo ágil](<(workflow.md)>)
 
 ## Entregables
 
@@ -64,7 +64,7 @@
 
 ### [ 02 ] Requerimientos funcionales
 
-> Registra los requerimientos funcionales considerados para este proyecto, para que no sea tan extenso, puedes dividirlo en [milestones](#definiciones). Por ejemplo: Milestone 1:  Formulario o pantalla para registro de nuevos usuarios. Milestone 2: Pantalla de inicio que muestra un registro de todos los proyectos. Milestone 3: CRUD  de proyectos. No es necesario describir aquí en detalle todas las tareas, sino más bien los módulos o milestones más generales.
+> Registra los requerimientos funcionales considerados para este proyecto, para que no sea tan extenso, puedes dividirlo en [milestones](#definiciones). Por ejemplo: Milestone 1: Formulario o pantalla para registro de nuevos usuarios. Milestone 2: Pantalla de inicio que muestra un registro de todos los proyectos. Milestone 3: CRUD de proyectos. No es necesario describir aquí en detalle todas las tareas, sino más bien los módulos o milestones más generales.
 
 - Milestone 1. Configuración inicial del proyecto: Crear estructura base, directorios, agregar librerías...
 - Milestone 2. Título: Descripción
@@ -78,10 +78,10 @@
 
 > Organiza tus requerimientos ó `milestones` de manera calendarizada.
 
-Milestone | WK1 | WK2 | WK3 | WK4 | WK5 | WK6 | WK7 | WK8 | WK9 | WK10 | WK11 | WK12 | WK13 | WK14 | WK15 | WK16
----|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
- #1 | x | x | x
- #2 |   |   | x | x | x
+| Milestone | WK1 | WK2 | WK3 | WK4 | WK5 | WK6 | WK7 | WK8 | WK9 | WK10 | WK11 | WK12 | WK13 | WK14 | WK15 | WK16 |
+| --------- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| #1        | x   | x   | x   |
+| #2        |     |     | x   | x   | x   |
 
 ### [ 05 ] Diseño de la UI
 
@@ -107,7 +107,7 @@ Milestone | WK1 | WK2 | WK3 | WK4 | WK5 | WK6 | WK7 | WK8 | WK9 | WK10 | WK11 | 
 
 ## Recursos
 
-- [Minimum Viable Product](https://www.agilealliance.org/glossary/mvp/#q=~(infinite~false~filters~(tags~(~'mvp))~searchTerm~'~sort~false~sortDirection~'asc~page~1))
+- [Minimum Viable Product](<https://www.agilealliance.org/glossary/mvp/#q=~(infinite~false~filters~(tags~(~'mvp))~searchTerm~'~sort~false~sortDirection~'asc~page~1)>)
 - [Minimum Viable Product (MVP)](https://www.productplan.com/glossary/minimum-viable-product/)
 - [Design Thinking](https://www.interaction-design.org/literature/topics/design-thinking)
 - [El proceso de pensamiento de diseño](https://www.youtube.com/watch?v=_r0VX-aU_T8)

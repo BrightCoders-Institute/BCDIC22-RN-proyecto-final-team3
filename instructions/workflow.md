@@ -44,7 +44,7 @@ Flujo de trabajo recomendado
 
 ## 04 Aprobación
 
-- Se deben  obtener por lo menos la aprobación  de:
+- Se deben obtener por lo menos la aprobación de:
   - 2 brightcoders (obligatorio)
   - 1 mentor (recomendado)
 - Se debe obtener la calificación requerida por el analizador de código estático (rubycritic, codeclimate, etc.)

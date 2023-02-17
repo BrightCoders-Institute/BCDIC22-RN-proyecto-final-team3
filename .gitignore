@@ -1,0 +1,19 @@
+.env
+.expo/
+.vscode/.react
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+app.json
+coverage/
+dist/
+node_modules/
+npm-debug.*
+src/firebase/google-services.json
+web-build/
+
+# macOS
+.DS_Store
