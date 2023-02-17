@@ -1,5 +1,5 @@
 name: Expo PR Preview
-on: [pull_request, workflow_dispatch ]
+on: [pull_request, workflow_dispatch]
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -29,9 +29,3 @@ jobs:
         uses: expo/expo-github-action/preview-comment@v7
         with:
           channel: pr-${{ github.event.number }}
-          message: `This pull request was automatically deployed using [Expo GitHub Actions](https://github.com/expo/expo-github-action/tree/main/preview-comment)!\n` +
-            `\n- Project: **@{projectOwner}/{projectSlug}**` +
-            `\n- Channel: **{channel}**` +
-            `\n- Project link: **{projectDeepLink}**` +
-            `\n- Release channel link: **{projectLink}**` +
-            `\n\n<a href="{projectQR}"><img src="{projectQR}" height="200px" width="200px"></a>`

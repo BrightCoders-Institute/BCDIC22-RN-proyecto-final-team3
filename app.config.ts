@@ -59,6 +59,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 	sdkVersion: '47.0.0',
 	// plugins: ['@react-native-firebase/app', '@react-native-firebase/auth', '@react-native-google-signin/google-signin'],
 	extra: {
+		eas: {
+			projectId: '1282976c-5e9c-4089-bff5-c456a6d34b49',
+		},
 		googleServices: process.env.GOOGLE_SERVICES_DATA
 			? (JSON.parse(process.env.GOOGLE_SERVICES_DATA) as { [key: string]: unknown })
 			: undefined,
