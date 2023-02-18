@@ -1,25 +1,26 @@
 name: Coverage
 on: [pull_request, push, workflow_dispatch]
 jobs:
-  run:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 🏗️ Setup repo
-        uses: actions/checkout@v2
+	collect-and-upload-coverage:
+		name: Run tests, collect and upload coverage
+		runs-on: ubuntu-latest
+		steps:
+			- name: 🏗️ Setup repo
+				uses: actions/checkout@v2
 
-      - name: 🏗️ Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-          cache: npm
+			- name: 🏗️ Setup Node
+				uses: actions/setup-node@v3
+				with:
+					node-version: 16.x
+					cache: npm
 
-      - name: 📦 Install dependencies
-        run: npm install
+			- name: 📦 Install dependencies
+				run: npm install
 
-      - name: 📊 Run tests and collect coverage
-        run: npm run test
+			- name: 📊 Run tests and collect coverage
+				run: npm run test
 
-      - name: 📤 Upload coverage to Codacy
-        uses: codacy/codacy-coverage-reporter-action@v1.3.0
-        with:
-          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+			- name: 📤 Upload coverage to Codacy
+				uses: codacy/codacy-coverage-reporter-action@v1.3.0
+				with:
+					project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
