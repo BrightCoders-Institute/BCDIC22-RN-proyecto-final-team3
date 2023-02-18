@@ -31,6 +31,3 @@ jobs:
 
       - name: 🚀 Build app
         run: eas build --non-interactive
-
-      - name: 🚀 Publish app
-        run: expo publish --non-interactive

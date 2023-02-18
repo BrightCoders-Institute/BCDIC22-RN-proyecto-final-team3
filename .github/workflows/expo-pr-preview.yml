@@ -25,13 +25,4 @@ jobs:
         run: npm install
 
       - name: 🚀 Update preview
-        run: expo update --auto --non-interactive
-
-      - name: 🚀 Publish preview
-        run: expo publish --release-channel=pr-${{ github.event.number }} --non-interactive
-
-      - name: 💬 Comment preview
-        # uses: expo/expo-github-action/preview-comment@v7
-        uses: lachenmayer/expo-github-action/preview-comment@eas-updates-qr
-        with:
-          channel: pr-${{ github.event.number }}
+        run: eas update --branch ${{ github.head_ref || github.ref_name }} --message ${{ github.sha }} --auto --non-interactive
