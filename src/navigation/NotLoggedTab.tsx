@@ -11,33 +11,33 @@ import { INotLoggedTabProps } from '../types/NotLoggedTab';
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
 export default class NotLoggedTab extends Component<INotLoggedTabProps> {
-	constructor(props: INotLoggedTabProps) {
-		super(props);
-	}
+  constructor(props: INotLoggedTabProps) {
+    super(props);
+  }
 
-	render() {
-		return (
-			<Tab.Navigator initialRouteName='InForms' backBehavior='initialRoute'>
-				<Tab.Screen
-					name='InForms'
-					component={InForms}
-					initialParams={{ mode: this.props.route.params.mode }}
-					options={{
-						title: 'Account',
-						headerShown: false,
-						tabBarIcon: ({ color, size }) => <MaterialIcons name={'login'} size={size} color={color} />,
-					}}
-				/>
-				<Tab.Screen
-					name='Settings'
-					component={Settings}
-					initialParams={{ mode: this.props.route.params.mode }}
-					options={{
-						title: 'Settings',
-						tabBarIcon: ({ color, size }) => <MaterialIcons name={'settings'} size={size} color={color} />,
-					}}
-				/>
-			</Tab.Navigator>
-		);
-	}
+  render() {
+    return (
+      <Tab.Navigator initialRouteName='InForms' backBehavior='initialRoute'>
+        <Tab.Screen
+          name='InForms'
+          component={InForms}
+          initialParams={{ mode: this.props.route.params.mode }}
+          options={{
+            title: 'Account',
+            headerShown: false,
+            tabBarIcon: ({ color, size }) => <MaterialIcons name={'login'} size={size} color={color} />,
+          }}
+        />
+        <Tab.Screen
+          name='Settings'
+          component={Settings}
+          initialParams={{ mode: this.props.route.params.mode }}
+          options={{
+            title: 'Settings',
+            tabBarIcon: ({ color, size }) => <MaterialIcons name={'settings'} size={size} color={color} />,
+          }}
+        />
+      </Tab.Navigator>
+    );
+  }
 }

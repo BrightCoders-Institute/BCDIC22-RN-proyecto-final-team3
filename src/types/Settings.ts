@@ -7,7 +7,7 @@ import { RootStackParamList } from './RootStackParamList';
 export type ISettingsProps = NativeStackScreenProps<RootStackParamList, 'Settings'>;
 
 export type ISettingsState = {
-	mode: boolean;
+  mode: boolean;
 };
 
 export type ISettingsContext = ContextType<typeof ThemeContext>;

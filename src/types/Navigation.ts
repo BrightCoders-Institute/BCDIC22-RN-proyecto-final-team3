@@ -1,3 +1,3 @@
 export type INavigationProps = {
-	mode: boolean;
+  mode: boolean;
 };

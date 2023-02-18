@@ -7,7 +7,7 @@ import { RootStackParamList } from './RootStackParamList';
 export type IFollowingProps = NativeStackScreenProps<RootStackParamList, 'Following'>;
 
 export type IFollowingState = {
-	search: string;
+  search: string;
 };
 
 export type IFollowingContext = ContextType<typeof ThemeContext>;

@@ -1,23 +1,23 @@
 {
-	"cli": {
-		"version": ">= 3.1.1"
-	},
-	"build": {
-		"development": {
-			"channel": "development",
-			"developmentClient": true
-		},
-		"preview": {
-			"channel": "preview",
-			"android": {
-				"buildType": "apk"
-			}
-		},
-		"production": {
-			"channel": "production"
-		}
-	},
-	"submit": {
-		"production": {}
-	}
+  "cli": {
+    "version": ">= 3.1.1"
+  },
+  "build": {
+    "development": {
+      "channel": "development",
+      "developmentClient": true
+    },
+    "preview": {
+      "channel": "preview",
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "production": {
+      "channel": "production"
+    }
+  },
+  "submit": {
+    "production": {}
+  }
 }

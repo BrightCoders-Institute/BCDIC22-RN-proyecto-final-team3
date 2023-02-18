@@ -10,30 +10,30 @@ import { RootStackParamList } from '../types/RootStackParamList';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default class Navigation extends Component<INavigationProps> {
-	constructor(props: INavigationProps) {
-		super(props);
-	}
+  constructor(props: INavigationProps) {
+    super(props);
+  }
 
-	render() {
-		return (
-			<Stack.Navigator initialRouteName='NotLoggedTab'>
-				<Stack.Screen
-					name='NotLoggedTab'
-					component={NotLoggedTab}
-					options={{
-						headerShown: false,
-					}}
-					initialParams={{ mode: this.props.mode }}
-				/>
-				<Stack.Screen
-					name='LoggedTab'
-					component={LoggedTab}
-					initialParams={{ mode: this.props.mode }}
-					options={{
-						headerShown: false,
-					}}
-				/>
-			</Stack.Navigator>
-		);
-	}
+  render() {
+    return (
+      <Stack.Navigator initialRouteName='NotLoggedTab'>
+        <Stack.Screen
+          name='NotLoggedTab'
+          component={NotLoggedTab}
+          options={{
+            headerShown: false,
+          }}
+          initialParams={{ mode: this.props.mode }}
+        />
+        <Stack.Screen
+          name='LoggedTab'
+          component={LoggedTab}
+          initialParams={{ mode: this.props.mode }}
+          options={{
+            headerShown: false,
+          }}
+        />
+      </Stack.Navigator>
+    );
+  }
 }

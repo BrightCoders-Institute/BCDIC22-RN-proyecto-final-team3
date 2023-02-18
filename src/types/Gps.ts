@@ -7,7 +7,7 @@ import { RootStackParamList } from './RootStackParamList';
 export type IGpsProps = NativeStackScreenProps<RootStackParamList, 'Gps'>;
 
 export type IGpsState = {
-	search: string;
+  search: string;
 };
 
 export type IGpsContext = ContextType<typeof ThemeContext>;

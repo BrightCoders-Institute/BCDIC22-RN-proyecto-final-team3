@@ -1,3 +1,3 @@
 export type IAppState = {
-	mode: boolean;
+  mode: boolean;
 };

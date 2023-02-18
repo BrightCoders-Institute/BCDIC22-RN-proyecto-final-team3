@@ -1,13 +1,13 @@
 {
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"editor.formatOnSave": true,
-	"editor.formatOnType": true,
-	"prettier.jsxSingleQuote": true,
-	"prettier.printWidth": 120,
-	"prettier.singleQuote": true,
-	"editor.fontSize": 12,
-	"prettier.useTabs": true,
-	"editor.tabSize": 2,
-	"editor.insertSpaces": false,
-	"prettier.tabWidth": 2
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.printWidth": 120,
+  "prettier.singleQuote": true,
+  "editor.fontSize": 12,
+  "prettier.useTabs": false,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "prettier.tabWidth": 2
 }

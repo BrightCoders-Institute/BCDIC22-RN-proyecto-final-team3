@@ -12,14 +12,14 @@ What did you implemented/Why did you implemented this:
 Examples:
 
 - What?: I've added support for authentication to implement Key Result 2 of OKR1. It includes
-model, table, controller and test. For more background, see ticket #JIRA-123.
+  model, table, controller and test. For more background, see ticket #JIRA-123.
 - Why?: These changes complete the user login and account creation experience. See #JIRA-123 for more information.
 
 ## Testing
 
 Help me how can I test or look at the changes
 
- Example:
+Example:
 
 - I've added coverage for testing all new methods. I used Faker for a few random user emails and names.
 
