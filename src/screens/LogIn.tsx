@@ -21,7 +21,7 @@ export default class LogIn extends Component<ILogInProps> {
 				<Button
 					title='Go to Sign Up'
 					onPress={() => {
-						this.props.navigation.navigate('SignUp');
+						this.props.navigation.navigate('SignUp', { mode: this.props.route.params.mode });
 					}}
 				/>
 			</View>

@@ -19,9 +19,9 @@ export default class LogIn extends Component<ISignUpProps> {
 					Open up ./src/screens/SignUp.tsx to start working on your app!
 				</Text>
 				<Button
-					title='Go to Log In'
+					title='Go to Gps'
 					onPress={() => {
-						this.props.navigation.navigate('LogIn');
+						this.props.navigation.navigate('LoggedTab', { mode: this.props.route.params.mode });
 					}}
 				/>
 			</View>
