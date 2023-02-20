@@ -33,7 +33,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       dark: {
         image: './src/assets/splash.png',
         resizeMode: 'contain',
-        backgroundColor: '#000000',
+        backgroundColor: '#121212',
       },
     },
     // bundleIdentifier: 'com.brightcoders.wwu',
@@ -52,7 +52,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       dark: {
         image: './src/assets/splash.png',
         resizeMode: 'contain',
-        backgroundColor: '#000000',
+        backgroundColor: '#121212',
       },
     },
     package: 'com.brightcoders.wwu',

@@ -21,7 +21,7 @@ export default class LogIn extends Component<ISignUpProps> {
         <Button
           title='Go to Gps'
           onPress={() => {
-            this.props.navigation.navigate('LoggedTab', { mode: this.props.route.params.mode });
+            this.props.navigation.navigate('LoggedTab');
           }}
         />
       </View>

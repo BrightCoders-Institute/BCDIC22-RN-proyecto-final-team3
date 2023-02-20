@@ -21,7 +21,6 @@ export default class NotLoggedTab extends Component<INotLoggedTabProps> {
         <Tab.Screen
           name='InForms'
           component={InForms}
-          initialParams={{ mode: this.props.route.params.mode }}
           options={{
             title: 'Account',
             headerShown: false,
@@ -31,7 +30,6 @@ export default class NotLoggedTab extends Component<INotLoggedTabProps> {
         <Tab.Screen
           name='Settings'
           component={Settings}
-          initialParams={{ mode: this.props.route.params.mode }}
           options={{
             title: 'Settings',
             tabBarIcon: ({ color, size }) => <MaterialIcons name={'settings'} size={size} color={color} />,

@@ -48,7 +48,6 @@ export default class LoggedTab extends Component<ILoggedTabProps> {
         <Tab.Screen
           name='Settings'
           component={Settings}
-          initialParams={{ mode: this.props.route.params.mode }}
           options={{
             title: 'Settings',
             tabBarIcon: ({ color, size }) => <MaterialIcons name={'settings'} size={size} color={color} />,

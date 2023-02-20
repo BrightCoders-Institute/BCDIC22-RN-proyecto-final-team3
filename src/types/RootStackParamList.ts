@@ -3,11 +3,11 @@ export type RootStackParamList = {
   Following: undefined;
   Gps: undefined;
   InFollowing: undefined;
-  InForms: { mode: boolean };
+  InForms: undefined;
   InGps: undefined;
-  LoggedTab: { mode: boolean };
-  LogIn: { mode: boolean };
-  NotLoggedTab: { mode: boolean };
-  Settings: { mode: boolean };
-  SignUp: { mode: boolean };
+  LoggedTab: undefined;
+  LogIn: undefined;
+  NotLoggedTab: undefined;
+  Settings: undefined;
+  SignUp: undefined;
 };

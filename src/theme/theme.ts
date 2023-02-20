@@ -1,5 +1,6 @@
 export default {
   light: {
+    isDark: false,
     colors: {
       primary: '#E0FFFF',
       secondary: '#FFFFFF',
@@ -7,6 +8,7 @@ export default {
     },
   },
   dark: {
+    isDark: true,
     colors: {
       primary: '#191919',
       secondary: '#000000',

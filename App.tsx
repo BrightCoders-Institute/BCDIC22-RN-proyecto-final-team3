@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Appearance } from 'react-native';
 import 'expo-dev-client';
 import { StatusBar } from 'expo-status-bar';
+import * as SystemUI from 'expo-system-ui';
 import { EventRegister } from 'react-native-event-listeners';
 import { NavigationContainer, DarkTheme, DefaultTheme } from '@react-navigation/native';
 import theme from './src/theme/theme';
@@ -13,13 +14,14 @@ export default class App extends Component<object, IAppState> {
   constructor(props: object) {
     super(props);
     this.state = {
-      mode: Appearance.getColorScheme() === 'dark',
+      mode: Appearance.getColorScheme(),
     };
   }
 
   componentDidMount() {
-    const eventListener = EventRegister.addEventListener('changeTheme', (mode: boolean) => {
+    const eventListener = EventRegister.addEventListener('changeTheme', (mode: string) => {
       this.setState({ mode });
+      SystemUI.setBackgroundColorAsync(mode === 'dark' ? DarkTheme.colors.card : DefaultTheme.colors.card);
     });
     return () => {
       if (typeof eventListener === 'string') {
@@ -30,10 +32,10 @@ export default class App extends Component<object, IAppState> {
 
   render() {
     return (
-      <ThemeContext.Provider value={this.state.mode ? theme.dark : theme.light}>
-        <StatusBar style={this.state.mode ? 'light' : 'dark'} />
-        <NavigationContainer theme={this.state.mode ? DarkTheme : DefaultTheme}>
-          <Navigation mode={this.state.mode} />
+      <ThemeContext.Provider value={this.state.mode === 'dark' ? theme.dark : theme.light}>
+        <StatusBar style={this.state.mode === 'dark' ? 'light' : 'dark'} />
+        <NavigationContainer theme={this.state.mode === 'dark' ? DarkTheme : DefaultTheme}>
+          <Navigation />
         </NavigationContainer>
       </ThemeContext.Provider>
     );

@@ -20,7 +20,6 @@ export default class InForms extends Component<IInFormsProps> {
         <Stack.Screen
           name='LogIn'
           component={LogIn}
-          initialParams={{ mode: this.props.route.params.mode }}
           options={{
             title: 'Log in',
             headerBackVisible: false,
@@ -29,7 +28,6 @@ export default class InForms extends Component<IInFormsProps> {
         <Stack.Screen
           name='SignUp'
           component={SignUp}
-          initialParams={{ mode: this.props.route.params.mode }}
           options={{
             title: 'Sign up',
             headerBackVisible: false,
