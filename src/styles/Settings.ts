@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
-import { ISignUpContext } from '../types/SignUp';
+import { ISettingsContext } from '../types/Settings';
 
-export default (context: ISignUpContext) => {
+export default (context: ISettingsContext) => {
   return {
     screen: {
       style: StyleSheet.create({

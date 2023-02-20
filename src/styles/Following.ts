@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
-import { ISignUpContext } from '../types/SignUp';
+import { IFollowingContext } from '../types/Following';
 
-export default (context: ISignUpContext) => {
+export default (context: IFollowingContext) => {
   return {
     screen: {
       style: StyleSheet.create({

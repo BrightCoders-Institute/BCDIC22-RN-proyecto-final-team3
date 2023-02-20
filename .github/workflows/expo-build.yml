@@ -1,10 +1,13 @@
+name: Expo Build
 on:
   push:
     branches:
       - main
       - master
+  workflow_dispatch:
 jobs:
-  publish:
+  build-and-publish-app:
+    name: Build and publish
     runs-on: ubuntu-latest
     steps:
       - name: 🏗️ Setup repo
@@ -16,10 +19,11 @@ jobs:
           node-version: 16.x
           cache: npm
 
-      - name: 🏗️ Setup Expo
+      - name: 🏗️ Setup Expo and EAS
         uses: expo/expo-github-action@v7
         with:
           expo-version: latest
+          eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Install dependencies
@@ -27,6 +31,3 @@ jobs:
 
       - name: 🚀 Build app
         run: eas build --non-interactive
-
-      - name: 🚀 Publish app
-        run: expo publish --non-interactive

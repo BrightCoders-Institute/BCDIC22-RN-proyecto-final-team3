@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
-import { ISignUpContext } from '../types/SignUp';
+import { IGpsContext } from '../types/Gps';
 
-export default (context: ISignUpContext) => {
+export default (context: IGpsContext) => {
   return {
     screen: {
       style: StyleSheet.create({
