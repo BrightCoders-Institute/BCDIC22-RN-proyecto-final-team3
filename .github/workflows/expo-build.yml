@@ -6,8 +6,8 @@ on:
       - master
   workflow_dispatch:
 jobs:
-  build-and-publish-app:
-    name: Build and publish
+  update-and-build:
+    name: Update and build
     runs-on: ubuntu-latest
     steps:
       - name: 🏗️ Setup repo
@@ -19,8 +19,8 @@ jobs:
           node-version: 16.x
           cache: npm
 
-      - name: 🏗️ Setup Expo and EAS
-        uses: expo/expo-github-action@v7
+      - name: 🏗️ Setup EAS
+        uses: expo/expo-github-action@v8
         with:
           expo-version: latest
           eas-version: latest
@@ -29,5 +29,8 @@ jobs:
       - name: 📦 Install dependencies
         run: npm install
 
+      - name: 🚀 Create update
+        run: eas update --auto --non-interactive
+
       - name: 🚀 Build app
-        run: eas build --non-interactive
+        run: eas build --platform android --non-interactive

@@ -1,8 +1,8 @@
 name: Expo PR Preview
 on: [pull_request, workflow_dispatch]
 jobs:
-  update-and-publish-app:
-    name: Update and publish
+  preview:
+    name: Preview
     runs-on: ubuntu-latest
     steps:
       - name: 🏗️ Setup repo
@@ -14,8 +14,8 @@ jobs:
           node-version: 16.x
           cache: npm
 
-      - name: 🏗️ Setup Expo
-        uses: expo/expo-github-action@v7
+      - name: 🏗️ Setup EAS
+        uses: expo/expo-github-action@v8
         with:
           expo-version: latest
           eas-version: latest
@@ -24,5 +24,7 @@ jobs:
       - name: 📦 Install dependencies
         run: npm install
 
-      - name: 🚀 Update preview
-        run: eas update --branch ${{ github.head_ref || github.ref_name }} --message ${{ github.sha }} --auto --non-interactive
+      - name: 🚀💬 Update and comment preview
+        uses: expo/expo-github-action/preview@v8
+        with:
+          command: eas update --auto
