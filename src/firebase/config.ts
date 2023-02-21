@@ -1,4 +1,3 @@
-// Node modules
 import Constants from 'expo-constants';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 

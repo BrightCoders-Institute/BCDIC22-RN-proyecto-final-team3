@@ -27,4 +27,4 @@ jobs:
       - name: 🚀💬 Update and comment preview
         uses: expo/expo-github-action/preview@v8
         with:
-          command: eas update --auto
+          command: eas update --branch ${{ github.head_ref || github.ref_name }} --message ${{ github.event.head_commit.message || github.sha }} --auto

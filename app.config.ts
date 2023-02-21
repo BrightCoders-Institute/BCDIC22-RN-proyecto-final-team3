@@ -5,6 +5,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: 'WWU',
   slug: 'WWU',
+  scheme: 'wwu',
   version: '1.0.0',
   orientation: 'portrait',
   icon: './src/assets/icon.png',
