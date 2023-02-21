@@ -30,7 +30,7 @@ jobs:
         run: npm install
 
       - name: 🚀 Create update
-        run: eas update --branch ${{ github.head_ref || github.ref_name }} --message ${{ github.event.head_commit.message || github.sha }} --auto
+        run: eas update --branch ${{ github.head_ref || github.ref_name }} --message ${{ github.sha }} --auto
 
       - name: 🚀 Build app
         run: eas build --platform android --non-interactive
