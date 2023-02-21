@@ -10,9 +10,9 @@
 app.json
 coverage/
 dist/
+google-services.json
 node_modules/
 npm-debug.*
-src/firebase/google-services.json
 web-build/
 
 # macOS
