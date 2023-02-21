@@ -5,6 +5,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: 'WWU',
   slug: 'WWU',
+  scheme: 'wwu',
   version: '1.0.0',
   orientation: 'portrait',
   icon: './src/assets/icon.png',
@@ -39,7 +40,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     // bundleIdentifier: 'com.brightcoders.wwu',
   },
   android: {
-    //googleServicesFile: process.env.GOOGLE_SERVICES_JSON || process.env.GOOGLE_SERVICES_JSON_PATH,
+    googleServicesFile: process.env.GOOGLE_SERVICES_JSON || process.env.GOOGLE_SERVICES_JSON_PATH,
     userInterfaceStyle: 'automatic',
     adaptiveIcon: {
       foregroundImage: './src/assets/adaptive-icon.png',
@@ -61,7 +62,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     favicon: './src/assets/favicon.png',
   },
   sdkVersion: '47.0.0',
-  // plugins: ['@react-native-firebase/app', '@react-native-firebase/auth', '@react-native-google-signin/google-signin'],
+  plugins: ['@react-native-firebase/app', '@react-native-firebase/auth', '@react-native-google-signin/google-signin'],
   extra: {
     eas: {
       projectId: '1282976c-5e9c-4089-bff5-c456a6d34b49',
