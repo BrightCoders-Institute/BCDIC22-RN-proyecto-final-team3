@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Text, View } from 'react-native';
+import { Alert, Button, Linking, Platform, Text, View } from 'react-native';
 import * as Location from 'expo-location';
+import * as IntentLauncher from 'expo-intent-launcher';
 import * as TaskManager from 'expo-task-manager';
 import ThemeContext from '../theme/ThemeContext';
 import GpsStyles from '../styles/Gps';
 import { IGpsProps, IGpsState, IGpsContext } from '../types/Gps';
-
-const LOCATION_TASK_NAME = 'LOCATION_TASK_NAME';
 
 export default class Gps extends Component<IGpsProps, IGpsState> {
   static contextType = ThemeContext;
@@ -29,87 +28,13 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
         message: undefined,
       },
       search: '',
+      tasks: {
+        location: 'CURRENT_LOCATION',
+      },
     };
   }
 
-  startBackgroundTask = async () => {
-    // Define the background task for location tracking
-    TaskManager.defineTask(LOCATION_TASK_NAME, async ({ data, error }) => {
-      console.log(error);
-      if (error) return;
-
-      if (data) {
-        // Extract location coordinates from data
-        const { locations } = data as { locations: Location.LocationObject[] };
-        const location = locations[0];
-        if (location) {
-          this.setState({ location: { ...this.state.location, data: location } });
-        }
-      }
-    });
-  };
-
-  startForegroundUpdate = async () => {
-    // Check if foreground permission is granted
-    const { granted } = await Location.getForegroundPermissionsAsync();
-    if (!granted) return;
-
-    // Make sure that foreground location tracking is not running
-    this.state.events.location.update?.remove();
-
-    // Start watching position in real-time
-    this.state.events.location.update = await Location.watchPositionAsync(
-      {
-        // For better logs, we set the accuracy to the most sensitive option
-        accuracy: Location.Accuracy.BestForNavigation,
-      },
-      (location) => {
-        this.setState({ location: { ...this.state.location, data: location } });
-      }
-    );
-  };
-
-  stopForegroundUpdate = () => {
-    this.state.events.location.update?.remove();
-    this.setState({ location: { ...this.state.location, data: undefined } });
-  };
-
-  startBackgroundUpdate = async () => {
-    await this.startBackgroundTask();
-    // Don't track position if permission is not granted
-    const { granted } = await Location.getBackgroundPermissionsAsync();
-    if (!granted) return;
-
-    // Make sure the task is defined otherwise do not start tracking
-    const isTaskDefined = await TaskManager.isTaskDefined(LOCATION_TASK_NAME);
-    if (!isTaskDefined) return;
-
-    // Don't track if it is already running in background
-    const hasStarted = await Location.hasStartedLocationUpdatesAsync(LOCATION_TASK_NAME);
-    if (hasStarted) return;
-
-    await Location.startLocationUpdatesAsync(LOCATION_TASK_NAME, {
-      // For better logs, we set the accuracy to the most sensitive option
-      accuracy: Location.Accuracy.Lowest,
-      // Make sure to enable this notification if you want to consistently track in the background
-      showsBackgroundLocationIndicator: true,
-      foregroundService: {
-        notificationTitle: 'Location',
-        notificationBody: 'Location tracking in background',
-        notificationColor: '#fff',
-      },
-    });
-  };
-
-  stopBackgroundUpdate = async () => {
-    const hasStarted = await Location.hasStartedLocationUpdatesAsync(LOCATION_TASK_NAME);
-    if (hasStarted) {
-      await Location.stopLocationUpdatesAsync(LOCATION_TASK_NAME);
-      this.setState({ location: { ...this.state.location, data: undefined } });
-    }
-  };
-
-  componentDidMount() {
+  setUpSearch = () => {
     this.props.navigation.setOptions({
       headerSearchBarOptions: {
         placeholder: 'Search',
@@ -121,23 +46,146 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
         },
       },
     });
-    const requestPermissions = async () => {
+  };
+
+  setUpLocation = async () => {
+    const isLocationEnabled = await Location.hasServicesEnabledAsync();
+    let isPermissionAllowed = await Location.getForegroundPermissionsAsync();
+    if (!isPermissionAllowed.granted) {
+      if (isPermissionAllowed.canAskAgain) {
+        isPermissionAllowed = await Location.requestForegroundPermissionsAsync();
+      } else {
+        Alert.alert('Permission denied', 'Please allow location permission in settings', [
+          { text: 'Cancel' },
+          { text: 'Allow permission', onPress: () => this.openAppSettings() },
+        ]);
+      }
+    }
+    if (!isLocationEnabled) {
+      Alert.alert('Gps disabled', 'Turn on GPS to get location weather', [
+        { text: 'Cancel' },
+        { text: 'Turn on', onPress: () => this.openLocationSettings() },
+      ]);
+    }
+
+    (async () => {
       const foreground = await Location.requestForegroundPermissionsAsync();
       if (foreground) {
         this.startForegroundUpdate();
       }
       if (foreground.granted) {
         await Location.requestBackgroundPermissionsAsync();
-        this.startBackgroundUpdate();
       }
-      this.setState({ location: { ...this.state.location, enabled: await Location.hasServicesEnabledAsync() } }); // Not working
-    };
-    requestPermissions();
+      setInterval(async () => {
+        const locationEnabled = await Location.hasServicesEnabledAsync();
+        this.setState({ location: { ...this.state.location, enabled: locationEnabled } });
+        if (locationEnabled && foreground) {
+          this.startForegroundUpdate();
+        }
+      }, 5000);
+    })();
+  };
+
+  openAppSettings = () => {
+    if (Platform.OS === 'android') Linking.openSettings();
+    if (Platform.OS === 'ios') Linking.openURL('app-settings:');
+  };
+
+  openLocationSettings = () => {
+    if (Platform.OS === 'android')
+      IntentLauncher.startActivityAsync(IntentLauncher.ActivityAction.LOCATION_SOURCE_SETTINGS);
+    if (Platform.OS === 'ios') Linking.openURL('app-settings:');
+  };
+
+  startCurrentLocationTask = async () => {
+    TaskManager.defineTask(this.state.tasks.location, async ({ data, error }) => {
+      if (error) return;
+      if (data) {
+        const { locations } = data as { locations: Location.LocationObject[] };
+        const location = locations[0];
+        if (location) {
+          this.setState({ location: { ...this.state.location, data: location } });
+        }
+      }
+    });
+  };
+
+  startBackgroundUpdate = async () => {
+    await this.startCurrentLocationTask();
+    const { granted } = await Location.getBackgroundPermissionsAsync();
+    if (!granted) return;
+    const isTaskDefined = await TaskManager.isTaskDefined(this.state.tasks.location);
+    if (!isTaskDefined) return;
+    const hasStarted = await Location.hasStartedLocationUpdatesAsync(this.state.tasks.location);
+    if (hasStarted) return;
+    await Location.startLocationUpdatesAsync(this.state.tasks.location, {
+      accuracy: Location.Accuracy.Lowest,
+      showsBackgroundLocationIndicator: true,
+      foregroundService: {
+        notificationTitle: 'WWU',
+        notificationBody: 'Tracking your location',
+        notificationColor: '#fff',
+      },
+    });
+  };
+
+  startForegroundUpdate = async () => {
+    const { granted } = await Location.getForegroundPermissionsAsync();
+    const locationEnabled = await Location.hasServicesEnabledAsync();
+    if (!granted) return;
+    if (granted && locationEnabled && this.state.events.location.update === undefined) {
+      try {
+        this.state.events.location.update = await Location.watchPositionAsync(
+          {
+            accuracy: Location.Accuracy.BestForNavigation,
+          },
+          async (location) => {
+            this.setState({
+              ...this.state,
+              location: { ...this.state.location, data: location, enabled: granted },
+            });
+          }
+        );
+      } catch (error) {
+        if (error instanceof Error) {
+          this.state.events.location.update?.remove();
+          this.setState({
+            location: {
+              ...this.state.location,
+              data: undefined,
+              enabled: granted,
+              message: error.message,
+            },
+          });
+        }
+      }
+    }
+  };
+
+  stopBackgroundUpdate = async () => {
+    const hasStarted = await Location.hasStartedLocationUpdatesAsync(this.state.tasks.location);
+    if (hasStarted) {
+      await Location.stopLocationUpdatesAsync(this.state.tasks.location);
+      this.setState({ location: { ...this.state.location, data: undefined } });
+    }
+  };
+
+  stopForegroundUpdate = () => {
+    this.state.events.location.update?.remove();
+    (async () => {
+      this.setState({
+        location: { ...this.state.location, data: undefined, enabled: await Location.hasServicesEnabledAsync() },
+      });
+    })();
+  };
+
+  componentDidMount() {
+    this.setUpSearch();
+    this.setUpLocation();
   }
 
   componentWillUnmount() {
     this.stopForegroundUpdate();
-    this.stopBackgroundUpdate();
   }
 
   render() {
@@ -152,14 +200,20 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
           <View>
             <Text>{`Latitude: ${this.state.location.data.coords.latitude}`}</Text>
             <Text>{`Longitude: ${this.state.location.data.coords.longitude}`}</Text>
-            <Button
-              title='Get GPS'
-              onPress={() => {
-                console.log(this.state.location);
-              }}
-            />
           </View>
         )}
+        <Button
+          title='Enable GPS'
+          onPress={() => {
+            this.setUpLocation();
+          }}
+        />
+        <Button
+          title='Get GPS'
+          onPress={() => {
+            console.log(this.state.location);
+          }}
+        />
       </View>
     );
   }

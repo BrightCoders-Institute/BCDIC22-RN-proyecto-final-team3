@@ -18,7 +18,7 @@ export default class LoggedTab extends Component<ILoggedTabProps> {
 
   render() {
     return (
-      <Tab.Navigator initialRouteName='Gps' backBehavior='initialRoute'>
+      <Tab.Navigator initialRouteName='InGps' backBehavior='initialRoute'>
         <Tab.Screen
           name='InGps'
           component={InGps}
