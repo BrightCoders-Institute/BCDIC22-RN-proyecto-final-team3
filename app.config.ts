@@ -56,6 +56,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         backgroundColor: '#121212',
       },
     },
+    permissions: ['ACCESS_COARSE_LOCATION', 'ACCESS_FINE_LOCATION', 'ACCESS_BACKGROUND_LOCATION', 'FOREGROUND_SERVICE'],
     package: 'com.brightcoders.wwu',
   },
   web: {
