@@ -9,5 +9,3 @@ export type IFollowingProps = NativeStackScreenProps<RootStackParamList, 'Follow
 export type IFollowingState = {
   search: string;
 };
-
-export type IFollowingContext = ContextType<typeof ThemeContext>;

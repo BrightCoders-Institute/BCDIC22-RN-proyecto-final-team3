@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
-import { IGpsContext } from '../types/Gps';
+import { IThemeContext } from '../types/ThemeContext';
 
-export default (context: IGpsContext) => {
+export default (context: IThemeContext) => {
   return {
     screen: {
       style: StyleSheet.create({

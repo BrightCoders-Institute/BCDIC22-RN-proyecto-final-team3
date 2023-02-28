@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import ThemeContext from '../theme/ThemeContext';
 import DetailsStyles from '../styles/Details';
-import { IDetailsProps, IDetailsContext } from '../types/Details';
+import { IDetailsProps } from '../types/Details';
+import { IThemeContext } from '../types/ThemeContext';
 
 export default class LogIn extends Component<IDetailsProps> {
   static contextType = ThemeContext;
-  declare context: IDetailsContext;
+  declare context: IThemeContext;
 
   constructor(props: IDetailsProps) {
     super(props);

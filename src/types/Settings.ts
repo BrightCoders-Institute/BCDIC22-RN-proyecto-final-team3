@@ -5,5 +5,3 @@ import ThemeContext from '../theme/ThemeContext';
 import { RootStackParamList } from './RootStackParamList';
 
 export type ISettingsProps = NativeStackScreenProps<RootStackParamList, 'Settings'>;
-
-export type ISettingsContext = ContextType<typeof ThemeContext>;

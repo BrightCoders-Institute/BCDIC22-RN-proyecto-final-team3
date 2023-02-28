@@ -5,5 +5,3 @@ import ThemeContext from '../theme/ThemeContext';
 import { RootStackParamList } from './RootStackParamList';
 
 export type ILogInProps = NativeStackScreenProps<RootStackParamList, 'LogIn'>;
-
-export type ILogInContext = ContextType<typeof ThemeContext>;

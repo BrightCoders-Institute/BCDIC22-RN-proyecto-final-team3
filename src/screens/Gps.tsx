@@ -5,11 +5,12 @@ import * as IntentLauncher from 'expo-intent-launcher';
 import * as TaskManager from 'expo-task-manager';
 import ThemeContext from '../theme/ThemeContext';
 import GpsStyles from '../styles/Gps';
-import { IGpsProps, IGpsState, IGpsContext } from '../types/Gps';
+import { IGpsProps, IGpsState } from '../types/Gps';
+import { IThemeContext } from '../types/ThemeContext';
 
 export default class Gps extends Component<IGpsProps, IGpsState> {
   static contextType = ThemeContext;
-  declare context: IGpsContext;
+  declare context: IThemeContext;
 
   constructor(props: IGpsProps) {
     super(props);

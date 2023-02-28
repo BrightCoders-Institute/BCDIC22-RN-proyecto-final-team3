@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
-import { IFollowingContext } from '../types/Following';
+import { IThemeContext } from '../types/ThemeContext';
 
-export default (context: IFollowingContext) => {
+export default (context: IThemeContext) => {
   return {
     screen: {
       style: StyleSheet.create({

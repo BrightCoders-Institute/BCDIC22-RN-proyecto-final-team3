@@ -25,5 +25,3 @@ export type IGpsState = {
     location: string;
   };
 };
-
-export type IGpsContext = ContextType<typeof ThemeContext>;

@@ -5,5 +5,3 @@ import ThemeContext from '../theme/ThemeContext';
 import { RootStackParamList } from './RootStackParamList';
 
 export type ISignUpProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>;
-
-export type ISignUpContext = ContextType<typeof ThemeContext>;

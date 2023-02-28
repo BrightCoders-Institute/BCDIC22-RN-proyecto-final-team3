@@ -1,14 +1,14 @@
 import { StyleSheet } from 'react-native';
-import { ILogInContext } from '../types/LogIn';
+import CTextInput from './components/CTextInput';
+import { IThemeContext } from '../types/ThemeContext';
 
-export default (context: ILogInContext) => {
+export default (context: IThemeContext) => {
   return {
     screen: {
       style: StyleSheet.create({
         container: {
           flex: 1,
           backgroundColor: context.colors.primary,
-          alignItems: 'center',
           justifyContent: 'center',
         },
         text: {
@@ -16,5 +16,6 @@ export default (context: ILogInContext) => {
         },
       }),
     },
+    input: CTextInput(context),
   };
 };

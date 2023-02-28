@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { Button, Text, View } from 'react-native';
 import ThemeContext from '../theme/ThemeContext';
 import SignUpStyles from '../styles/SignUp';
-import { ISignUpProps, ISignUpContext } from '../types/SignUp';
+import { ISignUpProps } from '../types/SignUp';
+import { IThemeContext } from '../types/ThemeContext';
 
 export default class LogIn extends Component<ISignUpProps> {
   static contextType = ThemeContext;
-  declare context: ISignUpContext;
+  declare context: IThemeContext;
 
   constructor(props: ISignUpProps) {
     super(props);
