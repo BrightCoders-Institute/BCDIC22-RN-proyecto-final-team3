@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Text, Switch, View } from 'react-native';
 import { EventRegister } from 'react-native-event-listeners';
 import ThemeContext from '../theme/ThemeContext';
-import SettingsStyles from '../styles/Settings';
-import { ISettingsProps } from '../types/Settings';
-import { IThemeContext } from '../types/ThemeContext';
+import SettingsStyles from '../styles/screens/Settings';
+import { ISettingsProps } from '../types/screens/Settings';
+import { IThemeContext } from '../types/theme/ThemeContext';
 
 export default class LogIn extends Component<ISettingsProps> {
   static contextType = ThemeContext;

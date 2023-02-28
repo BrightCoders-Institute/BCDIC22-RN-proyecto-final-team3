@@ -4,8 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LogIn from '../screens/LogIn';
 import SignUp from '../screens/SignUp';
 
-import { IInFormsProps } from '../types/InForms';
-import { RootStackParamList } from '../types/RootStackParamList';
+import { RootStackParamList } from '../types/navigation/RootStackParamList';
+import { IInFormsProps } from '../types/navigation/InForms';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

@@ -19,9 +19,10 @@ export default class CTextInput extends Component<ICTextInputProps, ICTextInputs
   }
 
   getLabel = () => {
-    if (this.props.label) return this.props.label.charAt(0).toUpperCase() + this.props.label.slice(1);
+    if (this.props.label)
+      return this.props.label.charAt(0).toUpperCase() + this.props.label.slice(1).toLocaleLowerCase();
     if (!this.props.type || this.props.type == 'text') return undefined;
-    return this.props.type.charAt(0).toUpperCase() + this.props.type.slice(1);
+    return this.props.type.charAt(0).toUpperCase() + this.props.type.slice(1).toLocaleLowerCase();
   };
 
   render() {

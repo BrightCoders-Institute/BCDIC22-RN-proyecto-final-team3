@@ -1,8 +1,6 @@
-import { ContextType } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import ThemeContext from '../theme/ThemeContext';
 
-import { RootStackParamList } from './RootStackParamList';
+import { RootStackParamList } from '../navigation/RootStackParamList';
 
 export type IFollowingProps = NativeStackScreenProps<RootStackParamList, 'Following'>;
 

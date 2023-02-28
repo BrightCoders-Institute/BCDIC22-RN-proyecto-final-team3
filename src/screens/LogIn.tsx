@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Button, Text, View } from 'react-native';
 import CTextInput from '../components/CTextInput';
 import ThemeContext from '../theme/ThemeContext';
-import LogInStyles from '../styles/LogIn';
-import { ILogInProps } from '../types/LogIn';
-import { IThemeContext } from '../types/ThemeContext';
+import LogInStyles from '../styles/screens/LogIn';
+import { ILogInProps } from '../types/screens/LogIn';
+import { IThemeContext } from '../types/theme/ThemeContext';
 
 export default class LogIn extends Component<ILogInProps> {
   static contextType = ThemeContext;

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import CTextInput from './components/CTextInput';
-import { IThemeContext } from '../types/ThemeContext';
+import CTextInput from '../components/CTextInput';
+import { IThemeContext } from '../../types/theme/ThemeContext';
 
 export default (context: IThemeContext) => {
   return {

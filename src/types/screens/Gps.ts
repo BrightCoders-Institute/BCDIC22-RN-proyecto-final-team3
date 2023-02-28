@@ -1,8 +1,7 @@
-import { ContextType } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import * as Location from 'expo-location';
-import ThemeContext from '../theme/ThemeContext';
-import { RootStackParamList } from './RootStackParamList';
+
+import { RootStackParamList } from '../navigation/RootStackParamList';
 
 export type IGpsProps = NativeStackScreenProps<RootStackParamList, 'Gps'>;
 
