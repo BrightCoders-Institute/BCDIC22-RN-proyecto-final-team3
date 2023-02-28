@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Text, View } from 'react-native';
+import CTextInput from '../components/CTextInput';
 import ThemeContext from '../theme/ThemeContext';
 import LogInStyles from '../styles/LogIn';
 import { ILogInProps, ILogInContext } from '../types/LogIn';
@@ -14,16 +15,21 @@ export default class LogIn extends Component<ILogInProps> {
 
   render() {
     return (
-      <View style={LogInStyles(this.context).screen.style.container}>
-        <Text style={LogInStyles(this.context).screen.style.text}>
-          Open up ./src/screens/LogIn.tsx to start working on your app!
-        </Text>
-        <Button
-          title='Go to Sign Up'
-          onPress={() => {
-            this.props.navigation.navigate('SignUp');
-          }}
-        />
+      <View>
+        <CTextInput label={'Name'} />
+        <CTextInput type={'email'} />
+        <CTextInput type={'password'} />
+        <View style={LogInStyles(this.context).screen.style.container}>
+          <Text style={LogInStyles(this.context).screen.style.text}>
+            Open up ./src/screens/LogIn.tsx to start working on your app!
+          </Text>
+          <Button
+            title='Go to Sign Up'
+            onPress={() => {
+              this.props.navigation.navigate('SignUp');
+            }}
+          />
+        </View>
       </View>
     );
   }
