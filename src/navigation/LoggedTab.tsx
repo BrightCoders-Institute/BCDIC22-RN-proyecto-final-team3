@@ -6,8 +6,8 @@ import Settings from '../screens/Settings';
 import InGps from './InGps';
 import InFollowing from './InFollowing';
 
-import { RootStackParamList } from '../types/RootStackParamList';
-import { ILoggedTabProps } from '../types/LoggedTab';
+import { RootStackParamList } from '../types/navigation/RootStackParamList';
+import { ILoggedTabProps } from '../types/navigation/LoggedTab';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 

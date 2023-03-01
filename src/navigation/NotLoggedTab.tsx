@@ -5,8 +5,8 @@ import { MaterialIcons } from '@expo/vector-icons';
 import InForms from './InForms';
 import Settings from '../screens/Settings';
 
-import { RootStackParamList } from '../types/RootStackParamList';
-import { INotLoggedTabProps } from '../types/NotLoggedTab';
+import { RootStackParamList } from '../types/navigation/RootStackParamList';
+import { INotLoggedTabProps } from '../types/navigation/NotLoggedTab';
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 

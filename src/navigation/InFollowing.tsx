@@ -4,8 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Details from '../screens/Details';
 import Following from '../screens/Following';
 
-import { IInFollowingProps } from '../types/InFollowing';
-import { RootStackParamList } from '../types/RootStackParamList';
+import { RootStackParamList } from '../types/navigation/RootStackParamList';
+import { IInFollowingProps } from '../types/navigation/InFollowing';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

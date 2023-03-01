@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
-import { ILogInContext } from '../types/LogIn';
+import { IThemeContext } from '../../types/theme/ThemeContext';
 
-export default (context: ILogInContext) => {
+export default (context: IThemeContext) => {
   return {
     screen: {
       style: StyleSheet.create({

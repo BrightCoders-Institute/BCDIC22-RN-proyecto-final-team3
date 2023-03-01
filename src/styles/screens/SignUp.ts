@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
-import { IDetailsContext } from '../types/Details';
+import { IThemeContext } from '../../types/theme/ThemeContext';
 
-export default (context: IDetailsContext) => {
+export default (context: IThemeContext) => {
   return {
     screen: {
       style: StyleSheet.create({

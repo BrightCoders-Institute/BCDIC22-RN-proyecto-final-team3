@@ -4,8 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Details from '../screens/Details';
 import Gps from '../screens/Gps';
 
-import { IInGpsProps } from '../types/InGps';
-import { RootStackParamList } from '../types/RootStackParamList';
+import { RootStackParamList } from '../types/navigation/RootStackParamList';
+import { IInGpsProps } from '../types/navigation/InGps';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

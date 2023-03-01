@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoggedTab from './LoggedTab';
 import NotLoggedTab from './NotLoggedTab';
 
-import { RootStackParamList } from '../types/RootStackParamList';
+import { RootStackParamList } from '../types/navigation/RootStackParamList';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

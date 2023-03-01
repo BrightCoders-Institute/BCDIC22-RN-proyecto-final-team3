@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
-import { ISettingsContext } from '../types/Settings';
+import { IThemeContext } from '../../types/theme/ThemeContext';
 
-export default (context: ISettingsContext) => {
+export default (context: IThemeContext) => {
   return {
     screen: {
       style: StyleSheet.create({
