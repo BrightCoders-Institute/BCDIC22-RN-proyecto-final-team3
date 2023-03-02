@@ -1,4 +1,6 @@
 import { StyleSheet } from 'react-native';
+import CButtonComponent from '../../components/CButton';
+import CButtonStyle from '../components/CButton';
 import CTextInput from '../components/CTextInput';
 import { IThemeContext } from '../../types/theme/ThemeContext';
 
@@ -17,5 +19,10 @@ export default (context: IThemeContext) => {
       }),
     },
     input: CTextInput(context),
+    commonLoginButton: {
+      ...CButtonStyle(context),
+      buttonColor: '#0B6EFE',
+      textColor: 'white',
+    } as CButtonComponent['props']['style'],
   };
 };

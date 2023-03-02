@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Text, View } from 'react-native';
+import { View } from 'react-native';
+import CButton from '../components/CButton';
 import CTextInput from '../components/CTextInput';
 import ThemeContext from '../theme/ThemeContext';
 import LogInStyles from '../styles/screens/LogIn';
@@ -32,12 +33,26 @@ export default class LogIn extends Component<ILogInProps> {
           style={LogInStyles(this.context).input}
           type={'password'}
         />
-        <Button
-          title='Go to Sign Up'
-          onPress={() => {
-            this.props.navigation.navigate('SignUp');
-          }}
-        />
+        <View>
+          <CButton
+            disabled={false}
+            onPress={() => {
+              console.log('press');
+            }}
+            style={LogInStyles(this.context).commonLoginButton}
+            title='Log in'
+          />
+        </View>
+        <View>
+          <CButton
+            disabled={true}
+            onPress={() => {
+              console.log('press');
+            }}
+            style={LogInStyles(this.context).commonLoginButton}
+            title='Log in'
+          />
+        </View>
       </View>
     );
   }
