@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { IThemeContext } from '../../types/theme/ThemeContext';
+import { IThemeContext } from '../../types/theme/context';
 
 export default (context: IThemeContext) => {
   return {
@@ -7,7 +7,7 @@ export default (context: IThemeContext) => {
       style: StyleSheet.create({
         container: {
           flex: 1,
-          backgroundColor: context.colors.primary,
+          backgroundColor: context.colors.background,
           alignItems: 'center',
           justifyContent: 'center',
         },

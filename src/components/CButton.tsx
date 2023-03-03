@@ -12,11 +12,10 @@ export default class CButton extends Component<ICButtonProps> {
       <Button
         buttonColor={this.props.style?.buttonColor}
         contentStyle={this.props.style?.contentStyle}
-        disabled={this.props.disabled}
         mode={this.props.style?.mode}
-        onPress={this.props.onPress}
+        onPress={!this.props.disabled && this.props.onPress ? this.props.onPress : undefined}
         textColor={this.props.style?.textColor}
-        style={this.props.style?.buttonStyle}
+        style={[this.props.style?.buttonStyle, { opacity: this.props.disabled ? 0.5 : undefined }]}
         uppercase={this.props.style?.uppercase}
         icon={this.props.style?.icon}
       >

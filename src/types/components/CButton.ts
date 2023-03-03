@@ -5,10 +5,10 @@ export type ICButtonProps = {
   onPress?: ButtonProps['onPress'];
   title: ButtonProps['children'];
   style?: {
-    contentStyle?: ButtonProps['contentStyle'];
     buttonColor?: ButtonProps['buttonColor'];
-    mode?: ButtonProps['mode'];
     buttonStyle?: ButtonProps['style'];
+    contentStyle?: ButtonProps['contentStyle'];
+    mode?: ButtonProps['mode'];
     textColor?: ButtonProps['textColor'];
     uppercase?: ButtonProps['uppercase'];
     icon?: ButtonProps['icon'];

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import CButton from '../components/CButton';
 import CTextInput from '../components/CTextInput';
-import ThemeContext from '../theme/ThemeContext';
+import ThemeContext from '../theme/context';
 import LogInStyles from '../styles/screens/LogIn';
 import { ILogInProps } from '../types/screens/LogIn';
-import { IThemeContext } from '../types/theme/ThemeContext';
+import { IThemeContext } from '../types/theme/context';
 
 export default class LogIn extends Component<ILogInProps> {
   static contextType = ThemeContext;
@@ -37,20 +37,20 @@ export default class LogIn extends Component<ILogInProps> {
           <CButton
             disabled={false}
             onPress={() => {
-              console.log('press');
+              this.props.navigation.navigate('SignUp');
             }}
             style={LogInStyles(this.context).commonLoginButton}
-            title='Log in'
+            title={'Log in'}
           />
         </View>
         <View>
           <CButton
             disabled={true}
             onPress={() => {
-              console.log('press');
+              this.props.navigation.navigate('SignUp');
             }}
             style={LogInStyles(this.context).commonLoginButton}
-            title='Log in'
+            title={'Log in'}
           />
         </View>
       </View>
