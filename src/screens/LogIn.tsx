@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Text, View } from 'react-native';
+import { View } from 'react-native';
+import CButton from '../components/CButton';
 import CTextInput from '../components/CTextInput';
-import ThemeContext from '../theme/ThemeContext';
+import ThemeContext from '../theme/context';
 import LogInStyles from '../styles/screens/LogIn';
 import { ILogInProps } from '../types/screens/LogIn';
-import { IThemeContext } from '../types/theme/ThemeContext';
+import { IThemeContext } from '../types/theme/context';
 
 export default class LogIn extends Component<ILogInProps> {
   static contextType = ThemeContext;
@@ -32,12 +33,26 @@ export default class LogIn extends Component<ILogInProps> {
           style={LogInStyles(this.context).input}
           type={'password'}
         />
-        <Button
-          title='Go to Sign Up'
-          onPress={() => {
-            this.props.navigation.navigate('SignUp');
-          }}
-        />
+        <View>
+          <CButton
+            disabled={false}
+            onPress={() => {
+              this.props.navigation.navigate('SignUp');
+            }}
+            style={LogInStyles(this.context).commonLoginButton}
+            title={'Log in'}
+          />
+        </View>
+        <View>
+          <CButton
+            disabled={true}
+            onPress={() => {
+              this.props.navigation.navigate('SignUp');
+            }}
+            style={LogInStyles(this.context).commonLoginButton}
+            title={'Log in'}
+          />
+        </View>
       </View>
     );
   }

@@ -3,10 +3,10 @@ import { Alert, Button, Linking, Platform, Text, View } from 'react-native';
 import * as Location from 'expo-location';
 import * as IntentLauncher from 'expo-intent-launcher';
 import * as TaskManager from 'expo-task-manager';
-import ThemeContext from '../theme/ThemeContext';
+import ThemeContext from '../theme/context';
 import GpsStyles from '../styles/screens/Gps';
 import { IGpsProps, IGpsState } from '../types/screens/Gps';
-import { IThemeContext } from '../types/theme/ThemeContext';
+import { IThemeContext } from '../types/theme/context';
 
 export default class Gps extends Component<IGpsProps, IGpsState> {
   static contextType = ThemeContext;

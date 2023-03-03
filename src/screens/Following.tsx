@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Text, View } from 'react-native';
-import ThemeContext from '../theme/ThemeContext';
+import ThemeContext from '../theme/context';
 import FollowingStyles from '../styles/screens/Following';
 import { IFollowingProps, IFollowingState } from '../types/screens/Following';
-import { IThemeContext } from '../types/theme/ThemeContext';
+import { IThemeContext } from '../types/theme/context';
 
 export default class LogIn extends Component<IFollowingProps, IFollowingState> {
   static contextType = ThemeContext;

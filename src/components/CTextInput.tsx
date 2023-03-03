@@ -30,6 +30,7 @@ export default class CTextInput extends Component<ICTextInputProps, ICTextInputs
       <View>
         <TextInput
           activeOutlineColor={this.props.style?.box?.activeOutlineColor}
+          textColor={this.props.style?.box?.textColor}
           error={this.props.error?.active}
           keyboardType={this.props.type ? (keyboardType[this.props.type] as TextInputProps['keyboardType']) : undefined}
           label={this.getLabel()}

@@ -20,7 +20,7 @@ export type ICTextInputProps = {
     };
     box?: { activeOutlineColor?: TextInputProps['activeOutlineColor'] } & { mode?: TextInputProps['mode'] } & {
       icon?: TextInputIconProps;
-    } & { style?: TextInputProps['style'] };
+    } & { style?: TextInputProps['style'] } & { textColor?: TextInputProps['textColor'] };
     text?: TextProps['style'];
     view?: ViewProps['style'];
   };

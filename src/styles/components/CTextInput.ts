@@ -1,13 +1,17 @@
 import CTextInput from '../../components/CTextInput';
-import { IThemeContext } from '../../types/theme/ThemeContext';
+import { IThemeContext } from '../../types/theme/context';
 
 export default (context: IThemeContext) => {
   return {
     box: {
       mode: 'outlined',
-      activeOutlineColor: context.colors.text,
+      activeOutlineColor: context.colors.input.default.border.active,
+      textColor: context.colors.input.default.text,
+      style: {
+        backgroundColor: context.colors.input.default.background,
+      },
       icon: {
-        iconColor: context.colors.text,
+        iconColor: context.colors.input.default.text,
       },
     },
     error: {

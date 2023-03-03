@@ -1,6 +1,9 @@
 import { StyleSheet } from 'react-native';
-import CTextInput from '../components/CTextInput';
-import { IThemeContext } from '../../types/theme/ThemeContext';
+import CButtonComponent from '../../components/CButton';
+import CButtonStyle from '../components/CButton';
+import CTextInputComponent from '../../components/CTextInput.js';
+import CTextInputStyle from '../components/CTextInput';
+import { IThemeContext } from '../../types/theme/context';
 
 export default (context: IThemeContext) => {
   return {
@@ -8,7 +11,7 @@ export default (context: IThemeContext) => {
       style: StyleSheet.create({
         container: {
           flex: 1,
-          backgroundColor: context.colors.primary,
+          backgroundColor: context.colors.background,
           justifyContent: 'center',
         },
         text: {
@@ -16,6 +19,9 @@ export default (context: IThemeContext) => {
         },
       }),
     },
-    input: CTextInput(context),
+    input: { ...CTextInputStyle(context) } as CTextInputComponent['props']['style'],
+    commonLoginButton: {
+      ...CButtonStyle(context),
+    } as CButtonComponent['props']['style'],
   };
 };
