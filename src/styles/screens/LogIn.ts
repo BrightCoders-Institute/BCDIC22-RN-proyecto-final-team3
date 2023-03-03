@@ -1,6 +1,8 @@
 import { StyleSheet } from 'react-native';
 import CButtonComponent from '../../components/CButton';
 import CButtonStyle from '../components/CButton';
+import CButtonIconComponent from '../../components/CButtonIcon';
+import CButtonIconStyle from '../components/CButtonIcon';
 import CTextInputComponent from '../../components/CTextInput.js';
 import CTextInputStyle from '../components/CTextInput';
 import { IThemeContext } from '../../types/theme/context';
@@ -23,5 +25,8 @@ export default (context: IThemeContext) => {
     commonLoginButton: {
       ...CButtonStyle(context),
     } as CButtonComponent['props']['style'],
+    googleLoginButton: {
+      ...CButtonIconStyle(context),
+    } as CButtonIconComponent['props']['style'],
   };
 };

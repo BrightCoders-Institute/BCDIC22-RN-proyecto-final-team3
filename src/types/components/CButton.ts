@@ -2,6 +2,7 @@ import { ButtonProps } from 'react-native-paper';
 
 export type ICButtonProps = {
   disabled?: ButtonProps['disabled'];
+  loading?: ButtonProps['loading'];
   onPress?: ButtonProps['onPress'];
   title: ButtonProps['children'];
   style?: {

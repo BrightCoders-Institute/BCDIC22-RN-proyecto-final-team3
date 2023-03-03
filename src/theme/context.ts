@@ -11,6 +11,13 @@ export default createContext<{
         text: string;
       };
     };
+    buttonIcon: {
+      default: {
+        background: string;
+        border: string;
+        text: string;
+      };
+    };
     input: {
       default: {
         background: string;

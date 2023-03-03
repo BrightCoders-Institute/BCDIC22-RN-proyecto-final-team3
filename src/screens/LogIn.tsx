@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import CButton from '../components/CButton';
+import CButtonIcon from '../components/CButtonIcon';
 import CTextInput from '../components/CTextInput';
 import ThemeContext from '../theme/context';
 import LogInStyles from '../styles/screens/LogIn';
@@ -33,26 +34,38 @@ export default class LogIn extends Component<ILogInProps> {
           style={LogInStyles(this.context).input}
           type={'password'}
         />
-        <View>
-          <CButton
-            disabled={false}
-            onPress={() => {
-              this.props.navigation.navigate('SignUp');
-            }}
-            style={LogInStyles(this.context).commonLoginButton}
-            title={'Log in'}
-          />
-        </View>
-        <View>
-          <CButton
-            disabled={true}
-            onPress={() => {
-              this.props.navigation.navigate('SignUp');
-            }}
-            style={LogInStyles(this.context).commonLoginButton}
-            title={'Log in'}
-          />
-        </View>
+        <CButton
+          disabled={false}
+          onPress={() => {
+            this.props.navigation.navigate('SignUp');
+          }}
+          style={LogInStyles(this.context).commonLoginButton}
+          title={'Log in'}
+        />
+        <CButton
+          disabled={true}
+          onPress={() => {
+            this.props.navigation.navigate('SignUp');
+          }}
+          style={LogInStyles(this.context).commonLoginButton}
+          title={'Log in'}
+        />
+        <CButtonIcon
+          disabled={false}
+          name={'google'}
+          onPress={() => {
+            this.props.navigation.navigate('SignUp');
+          }}
+          style={LogInStyles(this.context).googleLoginButton}
+        />
+        <CButtonIcon
+          disabled={true}
+          name={'google'}
+          onPress={() => {
+            this.props.navigation.navigate('SignUp');
+          }}
+          style={LogInStyles(this.context).googleLoginButton}
+        />
       </View>
     );
   }

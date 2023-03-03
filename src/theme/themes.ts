@@ -13,6 +13,13 @@ export const themeMode = {
           text: colors.general.white,
         },
       },
+      buttonIcon: {
+        default: {
+          background: colors.general.white,
+          border: colors.general.gray,
+          text: colors.light.royalBlue,
+        },
+      },
       input: {
         default: {
           background: colors.general.white,
@@ -35,6 +42,13 @@ export const themeMode = {
         default: {
           background: colors.dark.softBlue,
           text: colors.general.black,
+        },
+      },
+      buttonIcon: {
+        default: {
+          background: colors.general.black,
+          border: colors.general.gray,
+          text: colors.dark.softBlue,
         },
       },
       input: {
