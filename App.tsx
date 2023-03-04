@@ -18,17 +18,22 @@ export default class App extends Component<object, IAppState> {
     };
   }
 
+  setTheme = (mode: typeof this.state.mode) => {
+    if (mode != this.state.mode) this.setState({ mode });
+    SystemUI.setBackgroundColorAsync(
+      mode === 'dark' ? themeMode.dark.colors.background : themeMode.light.colors.background
+    );
+  };
+
+  changeThemeListener = () => {
+    return EventRegister.addEventListener('changeTheme', (mode: string) => this.setTheme(mode));
+  };
+
   componentDidMount() {
-    const eventListener = EventRegister.addEventListener('changeTheme', (mode: string) => {
-      this.setState({ mode });
-      SystemUI.setBackgroundColorAsync(
-        mode === 'dark' ? navigationThemeMode.dark.colors.card : navigationThemeMode.light.colors.card
-      );
-    });
+    this.setTheme(this.state.mode);
+    const changeThemeListener = this.changeThemeListener();
     return () => {
-      if (typeof eventListener === 'string') {
-        EventRegister.removeEventListener(eventListener);
-      }
+      if (typeof changeThemeListener === 'string') EventRegister.removeEventListener(changeThemeListener);
     };
   }
 

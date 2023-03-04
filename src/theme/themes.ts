@@ -72,6 +72,7 @@ export const navigationThemeMode = {
     ...DefaultTheme,
     dark: false,
     colors: {
+      background: colors.light.blue,
       primary: colors.light.royalBlue,
       card: colors.light.bluesky,
       text: colors.general.black,
@@ -81,6 +82,7 @@ export const navigationThemeMode = {
     ...DarkTheme,
     dark: true,
     colors: {
+      background: colors.dark.darkBlue,
       primary: colors.dark.softBlue,
       card: colors.dark.blueGrey,
       text: colors.general.white,

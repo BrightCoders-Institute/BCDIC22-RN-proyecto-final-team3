@@ -7,7 +7,6 @@ export default (context: IThemeContext) => {
       style: StyleSheet.create({
         container: {
           flex: 1,
-          backgroundColor: context.colors.background,
           alignItems: 'center',
           justifyContent: 'center',
         },

@@ -13,7 +13,6 @@ export default (context: IThemeContext) => {
       style: StyleSheet.create({
         container: {
           flex: 1,
-          backgroundColor: context.colors.background,
         },
         content: {
           marginHorizontal: 20,
