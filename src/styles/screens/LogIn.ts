@@ -14,10 +14,45 @@ export default (context: IThemeContext) => {
         container: {
           flex: 1,
           backgroundColor: context.colors.background,
-          justifyContent: 'center',
+        },
+        content: {
+          marginHorizontal: 20,
         },
         text: {
           color: context.colors.text,
+        },
+        imageContent: {
+          alignItems: 'center',
+          marginVertical: 10,
+        },
+        image: {
+          width: 200,
+          height: 200,
+        },
+        containerBtnGoogle: {
+          flexDirection: 'row',
+          marginVertical: 10,
+        },
+        divider: {
+          flex: 1,
+          height: 1,
+          backgroundColor: context.colors.text,
+        },
+        textLine: {
+          color: context.colors.text,
+          width: 100,
+          textAlign: 'center',
+        },
+        containerBtn: {
+          alignItems: 'center',
+          marginVertical: 10,
+        },
+        containerDividerInter: {
+          flexDirection: 'row',
+          alignItems: 'center',
+        },
+        containerDivider: {
+          width: '100%',
         },
       }),
     },
