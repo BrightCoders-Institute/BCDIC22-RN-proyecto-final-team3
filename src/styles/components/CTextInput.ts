@@ -6,6 +6,7 @@ export default (context: IThemeContext) => {
     box: {
       mode: 'outlined',
       activeOutlineColor: context.colors.input.default.border.active,
+      outlineColor: context.colors.input.default.border.default,
       textColor: context.colors.input.default.text,
       style: {
         backgroundColor: context.colors.input.default.background,

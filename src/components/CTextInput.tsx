@@ -30,12 +30,12 @@ export default class CTextInput extends Component<ICTextInputProps, ICTextInputs
       <View>
         <TextInput
           activeOutlineColor={this.props.style?.box?.activeOutlineColor}
-          textColor={this.props.style?.box?.textColor}
           error={this.props.error?.active}
           keyboardType={this.props.type ? (keyboardType[this.props.type] as TextInputProps['keyboardType']) : undefined}
           label={this.getLabel()}
           mode={this.props.style?.box?.mode}
           onChangeText={this.props.onChangeText}
+          outlineColor={this.props.style?.box?.outlineColor}
           right={
             this.props.type == 'password' ? (
               <TextInput.Icon
@@ -49,6 +49,7 @@ export default class CTextInput extends Component<ICTextInputProps, ICTextInputs
           }
           secureTextEntry={this.props.type == 'password' && this.state.hidden}
           style={this.props.style?.box?.style}
+          textColor={this.props.style?.box?.textColor}
           value={this.props.value}
         />
         <View style={[this.props.style?.error?.view, { opacity: this.props.error?.active ? undefined : 0 }]}>
