@@ -7,23 +7,43 @@ import CTextInput from '../components/CTextInput';
 import validator from '../functions/validator';
 import ThemeContext from '../theme/context';
 import LogInStyles from '../styles/screens/LogIn';
-import { ILogInProps } from '../types/screens/LogIn';
+import { ILogInProps, ILogInState, ILogInFormikProps } from '../types/screens/LogIn';
 import { IThemeContext } from '../types/theme/context';
 
-export default class LogIn extends Component<ILogInProps> {
+export default class LogIn extends Component<ILogInProps, ILogInState> {
   static contextType = ThemeContext;
   declare context: IThemeContext;
 
   constructor(props: ILogInProps) {
     super(props);
+    this.state = {
+      fomikProps: {
+        email: undefined,
+        password: undefined,
+      },
+    };
   }
+
+  emailValidator = (formikProps: ILogInFormikProps) => {
+    return formikProps.values.email ? !validator.email.check(formikProps.values.email) : false;
+  };
+
+  passwordValidator = (formikProps: ILogInFormikProps) => {
+    return formikProps.values.password ? !validator.password.check(formikProps.values.password) : false;
+  };
+
+  loginButtonValidator = (formikProps: ILogInFormikProps) => {
+    return formikProps.values.email && formikProps.values.password
+      ? !(validator.email.check(formikProps.values.email) && validator.password.check(formikProps.values.password))
+      : true;
+  };
 
   render() {
     return (
       <View style={LogInStyles(this.context).screen.style.container}>
         <View style={LogInStyles(this.context).screen.style.content}>
           <Formik
-            initialValues={{ email: undefined, password: undefined }}
+            initialValues={this.state.fomikProps}
             onSubmit={(values, formikHelpers) => {
               formikHelpers.resetForm();
               validator.email.clear();
@@ -38,7 +58,7 @@ export default class LogIn extends Component<ILogInProps> {
                 </View>
                 <CTextInput
                   error={{
-                    active: formikProps.values.email ? !validator.email.check(formikProps.values.email) : false,
+                    active: this.emailValidator(formikProps),
                     message: 'Email address is invalid',
                   }}
                   style={LogInStyles(this.context).input}
@@ -48,9 +68,7 @@ export default class LogIn extends Component<ILogInProps> {
                 />
                 <CTextInput
                   error={{
-                    active: formikProps.values.password
-                      ? !validator.password.check(formikProps.values.password)
-                      : false,
+                    active: this.passwordValidator(formikProps),
                     message: 'Password is incorrect',
                   }}
                   style={LogInStyles(this.context).input}
@@ -59,14 +77,7 @@ export default class LogIn extends Component<ILogInProps> {
                   onChangeText={(text) => formikProps.setFieldValue('password', text)}
                 />
                 <CButton
-                  disabled={
-                    formikProps.values.email && formikProps.values.password
-                      ? !(
-                          validator.email.check(formikProps.values.email) &&
-                          validator.password.check(formikProps.values.password)
-                        )
-                      : true
-                  }
+                  disabled={this.loginButtonValidator(formikProps)}
                   onPress={() => {
                     formikProps.submitForm();
                   }}
