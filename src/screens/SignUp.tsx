@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Image, Text, View } from 'react-native';
+import { Formik } from 'formik';
 import ThemeContext from '../theme/context';
 import SignUpStyles from '../styles/screens/SignUp';
 import { ISignUpProps, ISignUpState, ISignUpFormikProps } from '../types/screens/SignUp';
 import { IThemeContext } from '../types/theme/context';
-import { Formik } from 'formik';
 import validator from '../functions/validator';
 import CButton from '../components/CButton';
 import CButtonIcon from '../components/CButtonIcon';
@@ -18,19 +18,19 @@ export default class LogIn extends Component<ISignUpProps, ISignUpState> {
     super(props);
     this.state = {
       formikProps: {
-        name: undefined,
-        email: undefined,
-        password: undefined,
+        name: '',
+        email: '',
+        password: '',
       },
     };
   }
 
   emailValidator = (formikProps: ISignUpFormikProps) => {
-    return formikProps.values.email ? !validator.email.check(formikProps.values.email) : false;
+    return formikProps.values.email !== '' ? !validator.email.check(formikProps.values.email) : false;
   };
 
   passwordValidator = (formikProps: ISignUpFormikProps) => {
-    return formikProps.values.password ? !validator.password.check(formikProps.values.password) : false;
+    return formikProps.values.password !== '' ? !validator.password.check(formikProps.values.password) : false;
   };
 
   signupButtonValidator = (formikProps: ISignUpFormikProps) => {
@@ -87,7 +87,7 @@ export default class LogIn extends Component<ISignUpProps, ISignUpState> {
                 <CButton
                   disabled={this.signupButtonValidator(formikProps)}
                   onPress={() => {
-                    formikProps.submitForm();
+                    formikProps.handleSubmit();
                   }}
                   style={SignUpStyles(this.context).commonLoginButton}
                   title={'Sign Up'}
@@ -118,7 +118,7 @@ export default class LogIn extends Component<ISignUpProps, ISignUpState> {
                       disabled={false}
                       name={'google'}
                       onPress={() => {
-                        formikProps.submitForm();
+                        formikProps.handleSubmit();
                       }}
                       style={SignUpStyles(this.context).googleLoginButton}
                     />

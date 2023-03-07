@@ -7,9 +7,9 @@ export type ISignUpProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>;
 
 export type ISignUpState = {
   formikProps: {
-    name?: string;
-    email?: string;
-    password?: string;
+    name: string;
+    email: string;
+    password: string;
   };
 };
 

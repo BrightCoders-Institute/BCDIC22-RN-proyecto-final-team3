@@ -18,18 +18,18 @@ export default class LogIn extends Component<ILogInProps, ILogInState> {
     super(props);
     this.state = {
       formikProps: {
-        email: undefined,
-        password: undefined,
+        email: '',
+        password: '',
       },
     };
   }
 
   emailValidator = (formikProps: ILogInFormikProps) => {
-    return formikProps.values.email ? !validator.email.check(formikProps.values.email) : false;
+    return formikProps.values.email !== '' ? !validator.email.check(formikProps.values.email) : false;
   };
 
   passwordValidator = (formikProps: ILogInFormikProps) => {
-    return formikProps.values.password ? !validator.password.check(formikProps.values.password) : false;
+    return formikProps.values.password !== '' ? !validator.password.check(formikProps.values.password) : false;
   };
 
   loginButtonValidator = (formikProps: ILogInFormikProps) => {
@@ -79,7 +79,7 @@ export default class LogIn extends Component<ILogInProps, ILogInState> {
                 <CButton
                   disabled={this.loginButtonValidator(formikProps)}
                   onPress={() => {
-                    formikProps.submitForm();
+                    formikProps.handleSubmit();
                   }}
                   style={LogInStyles(this.context).commonLoginButton}
                   title={'Log in'}
@@ -110,7 +110,7 @@ export default class LogIn extends Component<ILogInProps, ILogInState> {
                       disabled={false}
                       name={'google'}
                       onPress={() => {
-                        formikProps.submitForm();
+                        formikProps.handleSubmit();
                       }}
                       style={LogInStyles(this.context).googleLoginButton}
                     />
