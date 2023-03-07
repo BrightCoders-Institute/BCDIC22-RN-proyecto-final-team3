@@ -20,6 +20,11 @@ export default (context: IThemeContext) => {
         text: {
           color: context.colors.text,
         },
+        textNav: {
+          marginTop: 20,
+          flexDirection: 'row',
+          justifyContent: 'center',
+        },
         imageContent: {
           alignItems: 'center',
           marginVertical: 10,
@@ -30,7 +35,7 @@ export default (context: IThemeContext) => {
         },
         containerBtnGoogle: {
           flexDirection: 'row',
-          marginVertical: 10,
+          marginVertical: 20,
         },
         divider: {
           flex: 1,
@@ -42,9 +47,13 @@ export default (context: IThemeContext) => {
           width: 100,
           textAlign: 'center',
         },
+        textLink: {
+          textDecorationLine: 'underline',
+          color: context.colors.link,
+        },
         containerBtn: {
           alignItems: 'center',
-          marginVertical: 10,
+          marginVertical: 20,
         },
         containerDividerInter: {
           flexDirection: 'row',

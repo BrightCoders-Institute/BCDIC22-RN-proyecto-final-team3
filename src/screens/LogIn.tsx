@@ -17,7 +17,7 @@ export default class LogIn extends Component<ILogInProps, ILogInState> {
   constructor(props: ILogInProps) {
     super(props);
     this.state = {
-      fomikProps: {
+      formikProps: {
         email: undefined,
         password: undefined,
       },
@@ -43,7 +43,7 @@ export default class LogIn extends Component<ILogInProps, ILogInState> {
       <View style={LogInStyles(this.context).screen.style.container}>
         <View style={LogInStyles(this.context).screen.style.content}>
           <Formik
-            initialValues={this.state.fomikProps}
+            initialValues={this.state.formikProps}
             onSubmit={(values, formikHelpers) => {
               formikHelpers.resetForm();
               validator.email.clear();
@@ -84,12 +84,23 @@ export default class LogIn extends Component<ILogInProps, ILogInState> {
                   style={LogInStyles(this.context).commonLoginButton}
                   title={'Log in'}
                 />
+                <View style={LogInStyles(this.context).screen.style.textNav}>
+                  <Text style={LogInStyles(this.context).screen.style.text}>
+                    Don't have an account?{' '}
+                    <Text
+                      style={LogInStyles(this.context).screen.style.textLink}
+                      onPress={() => this.props.navigation.navigate('SignUp')}
+                    >
+                      Sign Up
+                    </Text>
+                  </Text>
+                </View>
                 <View style={LogInStyles(this.context).screen.style.containerBtn}>
                   <View style={LogInStyles(this.context).screen.style.containerDivider}>
                     <View style={LogInStyles(this.context).screen.style.containerDividerInter}>
                       <View style={LogInStyles(this.context).screen.style.divider} />
                       <View>
-                        <Text style={LogInStyles(this.context).screen.style.textLine}>Or log in with</Text>
+                        <Text style={LogInStyles(this.context).screen.style.textLine}>Or Log In with</Text>
                       </View>
                       <View style={LogInStyles(this.context).screen.style.divider} />
                     </View>
