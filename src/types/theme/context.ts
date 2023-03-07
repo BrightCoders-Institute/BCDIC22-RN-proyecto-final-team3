@@ -1,4 +1,31 @@
-import { ContextType } from 'react';
-import ThemeContext from '../../theme/context';
-
-export type IThemeContext = ContextType<typeof ThemeContext>;
+export type IThemeContext = {
+  isDark?: boolean;
+  colors: {
+    background: string;
+    button: {
+      default: {
+        background: string;
+        text: string;
+      };
+    };
+    buttonIcon: {
+      default: {
+        background: string;
+        border: string;
+        text: string;
+      };
+    };
+    input: {
+      default: {
+        background: string;
+        text: string;
+        icon: string;
+        border: {
+          default: string;
+          active: string;
+        };
+      };
+    };
+    text: string;
+  };
+};

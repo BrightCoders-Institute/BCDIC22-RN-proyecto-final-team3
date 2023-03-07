@@ -11,8 +11,8 @@
 > Registra los requerimientos funcionales considerados para este proyecto, para que no sea tan extenso, puedes dividirlo en [milestones](#definiciones). Por ejemplo: Milestone 1: Formulario o pantalla para registro de nuevos usuarios. Milestone 2: Pantalla de inicio que muestra un registro de todos los proyectos. Milestone 3: CRUD de proyectos. No es necesario describir aquí en detalle todas las tareas, sino más bien los módulos o milestones más generales.
 
 - Milestone 1. Configuración inicial del proyecto: Crear estructura base, directorios, agregar librerías, workflow, etc.
-- Milestone 2. Pantalla de registrarse: Crear una pantalla para que el usuario pueda iniciar sesión.
-- Milestone 3. Pantalla de iniciar sesión: Crear una pantalla para que el usuario pueda iniciar sesión.
+- Milestone 2. Pantalla de iniciar sesión: Crear una pantalla para que el usuario pueda iniciar sesión.
+- Milestone 3. Pantalla de registrarse: Crear una pantalla para que el usuario pueda iniciar sesión.
 - Milestone 4. Pantalla de inicio: Crear una pantalla para que el usuario pueda ver el clima de su ciudad actual y otras acciones.
 - Milestone 5. Pantalla de favoritos: Crear una pantalla para que el usuario pueda ver las ciudades que ha agregado a favoritos.
 - Milestone 6. Pantalla de búsqueda: Crear una pantalla para que el usuario pueda buscar ciudades y ver el clima de estas.
@@ -31,7 +31,7 @@
 | Milestone | WK1 | WK2 | WK3 | WK4 | WK5 | WK6 | WK7 | WK8 | WK9 |
 | --------- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | #1        | :x: |     |     |     |     |     |     |     |     |
-| #2        |     | :x: |     |     |     |     |     |     |     |
+| #2        |     | :x: | :x: |     |     |     |     |     |     |
 | #3        |     |     | :x: |     |     |     |     |     |     |
 | #4        |     |     |     | :x: |     |     |     |     |     |
 | #5        |     |     |     |     | :x: |     |     |     |     |

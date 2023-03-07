@@ -10,6 +10,7 @@ export default class CButton extends Component<ICButtonProps> {
   render() {
     return (
       <Button
+        loading={this.props.loading}
         buttonColor={this.props.style?.buttonColor}
         contentStyle={this.props.style?.contentStyle}
         mode={this.props.style?.mode}

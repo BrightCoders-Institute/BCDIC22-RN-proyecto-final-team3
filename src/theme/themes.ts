@@ -13,6 +13,13 @@ export const themeMode = {
           text: colors.general.white,
         },
       },
+      buttonIcon: {
+        default: {
+          background: colors.general.white,
+          border: colors.general.gray,
+          text: colors.light.royalBlue,
+        },
+      },
       input: {
         default: {
           background: colors.general.white,
@@ -37,6 +44,13 @@ export const themeMode = {
           text: colors.general.black,
         },
       },
+      buttonIcon: {
+        default: {
+          background: colors.general.black,
+          border: colors.general.gray,
+          text: colors.dark.softBlue,
+        },
+      },
       input: {
         default: {
           background: colors.general.black,
@@ -58,6 +72,7 @@ export const navigationThemeMode = {
     ...DefaultTheme,
     dark: false,
     colors: {
+      background: colors.light.blue,
       primary: colors.light.royalBlue,
       card: colors.light.bluesky,
       text: colors.general.black,
@@ -67,6 +82,7 @@ export const navigationThemeMode = {
     ...DarkTheme,
     dark: true,
     colors: {
+      background: colors.dark.darkBlue,
       primary: colors.dark.softBlue,
       card: colors.dark.blueGrey,
       text: colors.general.white,

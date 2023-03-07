@@ -2,6 +2,7 @@ export default {
   general: {
     white: '#FFFFFF',
     black: '#191919',
+    gray: '#445764',
   },
   light: {
     blue: '#E3F0F8',
