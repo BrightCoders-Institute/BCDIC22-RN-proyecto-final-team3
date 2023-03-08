@@ -26,6 +26,7 @@ export type IThemeContext = {
         };
       };
     };
+    link: string;
     text: string;
   };
 };

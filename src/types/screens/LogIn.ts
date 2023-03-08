@@ -6,10 +6,10 @@ import { RootStackParamList } from '../navigation/RootStackParamList';
 export type ILogInProps = NativeStackScreenProps<RootStackParamList, 'LogIn'>;
 
 export type ILogInState = {
-  fomikProps: {
-    email?: string;
-    password?: string;
+  formikProps: {
+    email: string;
+    password: string;
   };
 };
 
-export type ILogInFormikProps = FormikProps<ILogInState['fomikProps']>;
+export type ILogInFormikProps = FormikProps<ILogInState['formikProps']>;

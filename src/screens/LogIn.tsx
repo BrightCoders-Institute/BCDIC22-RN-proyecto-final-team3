@@ -17,19 +17,19 @@ export default class LogIn extends Component<ILogInProps, ILogInState> {
   constructor(props: ILogInProps) {
     super(props);
     this.state = {
-      fomikProps: {
-        email: undefined,
-        password: undefined,
+      formikProps: {
+        email: '',
+        password: '',
       },
     };
   }
 
   emailValidator = (formikProps: ILogInFormikProps) => {
-    return formikProps.values.email ? !validator.email.check(formikProps.values.email) : false;
+    return formikProps.values.email !== '' ? !validator.email.check(formikProps.values.email) : false;
   };
 
   passwordValidator = (formikProps: ILogInFormikProps) => {
-    return formikProps.values.password ? !validator.password.check(formikProps.values.password) : false;
+    return formikProps.values.password !== '' ? !validator.password.check(formikProps.values.password) : false;
   };
 
   loginButtonValidator = (formikProps: ILogInFormikProps) => {
@@ -43,7 +43,7 @@ export default class LogIn extends Component<ILogInProps, ILogInState> {
       <View style={LogInStyles(this.context).screen.style.container}>
         <View style={LogInStyles(this.context).screen.style.content}>
           <Formik
-            initialValues={this.state.fomikProps}
+            initialValues={this.state.formikProps}
             onSubmit={(values, formikHelpers) => {
               formikHelpers.resetForm();
               validator.email.clear();
@@ -79,17 +79,28 @@ export default class LogIn extends Component<ILogInProps, ILogInState> {
                 <CButton
                   disabled={this.loginButtonValidator(formikProps)}
                   onPress={() => {
-                    formikProps.submitForm();
+                    formikProps.handleSubmit();
                   }}
                   style={LogInStyles(this.context).commonLoginButton}
                   title={'Log in'}
                 />
+                <View style={LogInStyles(this.context).screen.style.textNav}>
+                  <Text style={LogInStyles(this.context).screen.style.text}>
+                    Don't have an account?{' '}
+                    <Text
+                      style={LogInStyles(this.context).screen.style.textLink}
+                      onPress={() => this.props.navigation.navigate('SignUp')}
+                    >
+                      Sign Up
+                    </Text>
+                  </Text>
+                </View>
                 <View style={LogInStyles(this.context).screen.style.containerBtn}>
                   <View style={LogInStyles(this.context).screen.style.containerDivider}>
                     <View style={LogInStyles(this.context).screen.style.containerDividerInter}>
                       <View style={LogInStyles(this.context).screen.style.divider} />
                       <View>
-                        <Text style={LogInStyles(this.context).screen.style.textLine}>Or log in with</Text>
+                        <Text style={LogInStyles(this.context).screen.style.textLine}>Or Log In with</Text>
                       </View>
                       <View style={LogInStyles(this.context).screen.style.divider} />
                     </View>
@@ -99,7 +110,7 @@ export default class LogIn extends Component<ILogInProps, ILogInState> {
                       disabled={false}
                       name={'google'}
                       onPress={() => {
-                        formikProps.submitForm();
+                        formikProps.handleSubmit();
                       }}
                       style={LogInStyles(this.context).googleLoginButton}
                     />
