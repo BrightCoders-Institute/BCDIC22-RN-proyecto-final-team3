@@ -15,9 +15,9 @@
 - Milestone 3. Pantalla de registrarse: Crear una pantalla para que el usuario pueda iniciar sesión.
 - Milestone 4. Pantalla de inicio: Crear una pantalla para que el usuario pueda ver el clima de su ciudad actual y otras acciones.
 - Milestone 5. Pantalla de favoritos: Crear una pantalla para que el usuario pueda ver las ciudades que ha agregado a favoritos.
-- Milestone 6. Pantalla de búsqueda: Crear una pantalla para que el usuario pueda buscar ciudades y ver el clima de estas.
+- Milestone 6. Componente de búsqueda: Crear una componente para que el usuario pueda buscar ciudades y ver el clima de estas en las otras pantallas.
 - Milestone 7. Pantalla de detalles: Crear una pantalla para que el usuario pueda ver los detalles de la ciudad que seleccionó, ademas de poder anadirla o removerla de favoritos.
-- Milestone 8. Hacer los compomentes funcionales con la API y la base de datos.
+- Milestone 8. Pantalla de configuracion y hacer los compomentes funcionales con la API y la base de datos.
 - Milestone 9. Crear purebas unitarias y de integración.
 
 ### [ 03 ] Requerimientos no funcionales
@@ -31,9 +31,9 @@
 | Milestone | WK1 | WK2 | WK3 | WK4 | WK5 | WK6 | WK7 | WK8 | WK9 |
 | --------- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | #1        | :x: |     |     |     |     |     |     |     |     |
-| #2        |     | :x: | :x: |     |     |     |     |     |     |
+| #2        |     | :x: | :x: |     |     |     |     |     |     |
 | #3        |     |     | :x: |     |     |     |     |     |     |
-| #4        |     |     |     | :x: |     |     |     |     |     |
+| #4        |     |     | :x: | :x: |     |     |     |     |     |
 | #5        |     |     |     |     | :x: |     |     |     |     |
 | #6        |     |     |     |     |     | :x: |     |     |     |
 | #7        |     |     |     |     |     |     | :x: |     |     |
