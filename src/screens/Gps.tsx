@@ -194,6 +194,7 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
     return (
       <View style={GpsStyles(this.context).screen.style.container}>
         <CWWidget
+          style={GpsStyles(this.context).weatherWidget}
           data={{
             city: 'Colima',
             degrees: '80',
