@@ -1,4 +1,3 @@
-import { StyleSheet } from 'react-native';
 import CWWidget from '../../components/CWWidget';
 import { IThemeContext } from '../../types/theme/context';
 
