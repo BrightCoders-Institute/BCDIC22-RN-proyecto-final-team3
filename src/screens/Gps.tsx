@@ -7,6 +7,7 @@ import ThemeContext from '../theme/context';
 import GpsStyles from '../styles/screens/Gps';
 import { IGpsProps, IGpsState } from '../types/screens/Gps';
 import { IThemeContext } from '../types/theme/context';
+import CWWidget from '../components/CWWidget';
 
 export default class Gps extends Component<IGpsProps, IGpsState> {
   static contextType = ThemeContext;
@@ -192,6 +193,13 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
   render() {
     return (
       <View style={GpsStyles(this.context).screen.style.container}>
+        <CWWidget
+          data={{
+            city: 'Colima',
+            degrees: '80',
+            icon: 'https://www.losmundosdenoa.es/wp-content/uploads/2020/06/sol-e1603880900911.png',
+          }}
+        />
         <Text style={GpsStyles(this.context).screen.style.text}>
           Open up ./src/screens/Gps.tsx to start working on your app!
         </Text>
