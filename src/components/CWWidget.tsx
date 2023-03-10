@@ -15,7 +15,7 @@ export default class CWWidget extends Component<ICWWidgetProps> {
           <Image source={{ uri: this.props.data.icon }} style={this.props.style.image} />
         </View>
         <View style={this.props.style.rowContainer}>
-          <Text style={this.props.style.textCity}>{this.props.data.city}</Text>
+          <Text style={this.props.style.textCity}>{this.props.data.city.name}</Text>
           <FontAwesome
             style={this.props.style.icon.style}
             name={'location-arrow'}
