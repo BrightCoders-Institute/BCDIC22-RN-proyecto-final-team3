@@ -1,4 +1,6 @@
 import { StyleSheet } from 'react-native';
+import CWWidgetComponent from '../../components/CWWidget';
+import CWWidgetStyle from '../components/CWWidget';
 import { IThemeContext } from '../../types/theme/context';
 
 export default (context: IThemeContext) => {
@@ -15,5 +17,8 @@ export default (context: IThemeContext) => {
         },
       }),
     },
+    weatherWidget: {
+      ...CWWidgetStyle(context),
+    } as CWWidgetComponent['props']['style'],
   };
 };

@@ -2,12 +2,15 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
+  "editor.fontSize": 12,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
   "prettier.jsxSingleQuote": true,
   "prettier.printWidth": 120,
   "prettier.singleQuote": true,
-  "editor.fontSize": 12,
-  "prettier.useTabs": false,
-  "editor.tabSize": 2,
-  "editor.insertSpaces": true,
-  "prettier.tabWidth": 2
+  "prettier.tabWidth": 2,
+  "prettier.useTabs": false
 }
