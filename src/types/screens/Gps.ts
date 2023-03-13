@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import * as Location from 'expo-location';
-import { Location as OWMALocation } from 'openweather-api-node';
+import { Location as OWMALocation, CurrentWeather as OWMACurrentWeather } from 'openweather-api-node';
 
 import { RootStackParamList } from '../navigation/RootStackParamList';
 
@@ -28,5 +28,5 @@ export type IGpsState = {
   tasks: {
     location: string;
   };
-  weather: any;
+  conditions?: OWMACurrentWeather;
 };

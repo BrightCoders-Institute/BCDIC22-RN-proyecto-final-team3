@@ -31,7 +31,7 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
         data: undefined,
         message: undefined,
       },
-      weather: undefined,
+      conditions: undefined,
       search: '',
       tasks: {
         location: 'CURRENT_LOCATION',
@@ -96,9 +96,9 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
 
   setWeatherLocation = async () => {
     if (!this.state.location.data) return;
-    if (this.state.weather !== undefined) return;
+    if (this.state.conditions !== undefined) return;
     this.setState({
-      weather: await OWMA.getCurrent({
+      conditions: await OWMA.getCurrent({
         coordinates: {
           lat: this.state.location.data.coords.latitude,
           lon: this.state.location.data.coords.longitude,
@@ -235,44 +235,46 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
   }
 
   render() {
-    if (this.state.weather && this.state.location.data?.city) {
+    if (this.state.conditions && this.state.location.data?.city) {
       return (
         <View style={GpsStyles(this.context).screen.style.container}>
-          <CWWidget
-            style={GpsStyles(this.context).weatherWidget}
-            data={{
-              city: this.state.location.data.city,
-              degrees: this.state.weather.weather.temp.cur,
-              icon: this.state.weather.weather.icon.url,
-            }}
-          />
-          <View style={{ marginHorizontal: 15 }}>
-            <CWInfo data={this.state.weather} />
-          </View>
-
-          <Text style={GpsStyles(this.context).screen.style.text}>
-            Open up ./src/screens/Gps.tsx to start working on your app!
-          </Text>
-          <Text>{`Searched: ${this.state.search}`}</Text>
-          <Text>{`Location: ${this.state.location.enabled}`}</Text>
-          {this.state.location.enabled && this.state.location.data && (
+          <View style={GpsStyles(this.context).screen.style.content}>
+            <CWWidget
+              style={GpsStyles(this.context).weatherWidget}
+              data={{
+                city: this.state.location.data.city,
+                degrees: this.state.conditions.weather.temp.cur,
+                icon: this.state.conditions.weather.icon.url,
+              }}
+            />
             <View>
-              <Text>{`Latitude: ${this.state.location.data.coords.latitude}`}</Text>
-              <Text>{`Longitude: ${this.state.location.data.coords.longitude}`}</Text>
+              <CWInfo data={this.state.conditions} style={GpsStyles(this.context).weatherInfo} />
             </View>
-          )}
-          <Button
-            title='Enable GPS'
-            onPress={() => {
-              this.setUpLocation();
-            }}
-          />
-          <Button
-            title='Get GPS'
-            onPress={() => {
-              console.log(this.state.location);
-            }}
-          />
+
+            <Text style={GpsStyles(this.context).screen.style.text}>
+              Open up ./src/screens/Gps.tsx to start working on your app!
+            </Text>
+            <Text>{`Searched: ${this.state.search}`}</Text>
+            <Text>{`Location: ${this.state.location.enabled}`}</Text>
+            {this.state.location.enabled && this.state.location.data && (
+              <View>
+                <Text>{`Latitude: ${this.state.location.data.coords.latitude}`}</Text>
+                <Text>{`Longitude: ${this.state.location.data.coords.longitude}`}</Text>
+              </View>
+            )}
+            <Button
+              title='Enable GPS'
+              onPress={() => {
+                this.setUpLocation();
+              }}
+            />
+            <Button
+              title='Get GPS'
+              onPress={() => {
+                console.log(this.state.location);
+              }}
+            />
+          </View>
         </View>
       );
     }

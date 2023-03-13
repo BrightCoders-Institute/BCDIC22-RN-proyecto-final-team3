@@ -7,7 +7,7 @@ export type ICWWidgetProps = {
   data: {
     icon: string;
     city: OWMALocation;
-    degrees: string;
+    degrees: number;
   };
   style: {
     rowContainer: ViewProps['style'];

@@ -1,6 +1,7 @@
 export type IThemeContext = {
   isDark?: boolean;
   colors: {
+    card: string;
     background: string;
     button: {
       default: {
