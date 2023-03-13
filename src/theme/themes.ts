@@ -6,6 +6,7 @@ export const themeMode = {
   light: {
     isDark: false,
     colors: {
+      card: colors.light.bluesky,
       background: colors.light.blue,
       button: {
         default: {
@@ -38,6 +39,7 @@ export const themeMode = {
   dark: {
     isDark: true,
     colors: {
+      card: colors.dark.blueGrey,
       background: colors.dark.darkBlue,
       button: {
         default: {
