@@ -106,7 +106,7 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
             lon: this.state.location.data.coords.longitude,
           },
         }),
-        forecast: await OWMA.getForecast(5, {
+        forecast: await OWMA.getForecast(10, {
           coordinates: {
             lat: this.state.location.data.coords.latitude,
             lon: this.state.location.data.coords.longitude,
@@ -260,7 +260,7 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
               <CWInfo data={this.state.conditions.current} style={GpsStyles(this.context).weatherInfo} />
             </View>
             <View>
-              <CWDetails data={this.state.conditions.forecast} />
+              <CWDetails data={this.state.conditions.forecast} style={GpsStyles(this.context).weatherDetails} />
             </View>
             <View>
               <Text style={GpsStyles(this.context).screen.style.text}>
