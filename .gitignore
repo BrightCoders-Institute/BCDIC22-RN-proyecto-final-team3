@@ -11,6 +11,7 @@ app.json
 coverage/
 dist/
 google-services.json
+GoogleService-Info.plist
 node_modules/
 npm-debug.*
 web-build/
