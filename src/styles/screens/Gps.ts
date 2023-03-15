@@ -20,6 +20,10 @@ export default (context: IThemeContext) => {
         text: {
           color: context.colors.text,
         },
+        contendInfo: {
+          paddingBottom: 15,
+          paddingTop: 15,
+        },
       }),
     },
     weatherDetails: {

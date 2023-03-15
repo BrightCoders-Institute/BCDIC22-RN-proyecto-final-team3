@@ -5,7 +5,7 @@ export default (context: IThemeContext) => {
   return {
     container: {
       backgroundColor: context.colors.card,
-      borderRadius: 10,
+      borderRadius: 8,
       alignItems: 'center',
       padding: 10,
     },

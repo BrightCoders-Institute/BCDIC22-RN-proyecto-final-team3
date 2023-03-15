@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Button, Linking, Platform, Text, View } from 'react-native';
+import { Alert, Button, Linking, Platform, Text, ScrollView, View } from 'react-native';
 import * as Location from 'expo-location';
 import * as IntentLauncher from 'expo-intent-launcher';
 import * as TaskManager from 'expo-task-manager';
@@ -244,50 +244,44 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
   }
 
   render() {
-    if (this.state.conditions && this.state.location.data?.city) {
+    if (this.state.location.enabled === true) {
+      if (this.state.conditions && this.state.location.data?.city) {
+        return (
+          <ScrollView style={GpsStyles(this.context).screen.style.container}>
+            <View style={GpsStyles(this.context).screen.style.content}>
+              <CWWidget
+                style={GpsStyles(this.context).weatherWidget}
+                data={{
+                  city: this.state.location.data.city,
+                  degrees: this.state.conditions.current.weather.temp.cur,
+                  icon: this.state.conditions.current.weather.icon.url,
+                }}
+              />
+              <View style={GpsStyles(this.context).screen.style.contendInfo}>
+                <CWInfo data={this.state.conditions.current} style={GpsStyles(this.context).weatherInfo} />
+              </View>
+              <View>
+                <CWDetails data={this.state.conditions.forecast} style={GpsStyles(this.context).weatherDetails} />
+              </View>
+            </View>
+          </ScrollView>
+        );
+      }
+    } else if (this.state.location.enabled === false) {
       return (
-        <View style={GpsStyles(this.context).screen.style.container}>
-          <View style={GpsStyles(this.context).screen.style.content}>
-            <CWWidget
-              style={GpsStyles(this.context).weatherWidget}
-              data={{
-                city: this.state.location.data.city,
-                degrees: this.state.conditions.current.weather.temp.cur,
-                icon: this.state.conditions.current.weather.icon.url,
-              }}
-            />
-            <View>
-              <CWInfo data={this.state.conditions.current} style={GpsStyles(this.context).weatherInfo} />
-            </View>
-            <View>
-              <CWDetails data={this.state.conditions.forecast} style={GpsStyles(this.context).weatherDetails} />
-            </View>
-            <View>
-              <Text style={GpsStyles(this.context).screen.style.text}>
-                Open up ./src/screens/Gps.tsx to start working on your app!
-              </Text>
-              <Text>{`Searched: ${this.state.search}`}</Text>
-              <Text>{`Location: ${this.state.location.enabled}`}</Text>
-              {this.state.location.enabled && this.state.location.data && (
-                <View>
-                  <Text>{`Latitude: ${this.state.location.data.coords.latitude}`}</Text>
-                  <Text>{`Longitude: ${this.state.location.data.coords.longitude}`}</Text>
-                </View>
-              )}
-              <Button
-                title='Enable GPS'
-                onPress={() => {
-                  this.setUpLocation();
-                }}
-              />
-              <Button
-                title='Get GPS'
-                onPress={() => {
-                  console.log(this.state.location);
-                }}
-              />
-            </View>
-          </View>
+        <View>
+          <Button
+            title='Enable GPS'
+            onPress={() => {
+              this.setUpLocation();
+            }}
+          />
+        </View>
+      );
+    } else {
+      return (
+        <View>
+          <Text>Loading</Text>
         </View>
       );
     }
