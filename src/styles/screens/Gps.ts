@@ -11,8 +11,6 @@ export default (context: IThemeContext) => {
       style: StyleSheet.create({
         container: {
           flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
         },
         content: {
           marginHorizontal: 20,
