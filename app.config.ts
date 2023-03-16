@@ -1,5 +1,7 @@
-import 'dotenv/config';
+import dotenv from 'dotenv';
 import { ExpoConfig, ConfigContext } from 'expo/config';
+
+dotenv.config();
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
@@ -71,7 +73,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     googleServices: process.env.GOOGLE_SERVICES_DATA
       ? (JSON.parse(process.env.GOOGLE_SERVICES_DATA) as { [key: string]: unknown })
       : undefined,
-    openWeatherMapAPIKey: process.env.OPEN_WEATHER_MAP_API_KEY,
+    openWeatherMapAPIKey: process.env.OPEN_WEATHER_MAP_API_KEY
+      ? (process.env.OPEN_WEATHER_MAP_API_KEY as string)
+      : undefined,
   },
   owner: 'brightcoders',
 });

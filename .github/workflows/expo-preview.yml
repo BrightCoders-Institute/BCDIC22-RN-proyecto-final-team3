@@ -1,9 +1,14 @@
-name: Expo PR Preview
-on: [pull_request, workflow_dispatch]
+name: Expo Preview
+on:
+  pull_request:
+    types: [opened, synchronize]
+  workflow_dispatch:
 jobs:
   preview:
     name: Preview
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - name: 🏗️ Setup repo
         uses: actions/checkout@v3
@@ -11,13 +16,12 @@ jobs:
       - name: 🏗️ Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
           cache: npm
 
       - name: 🏗️ Setup EAS
         uses: expo/expo-github-action@v8
         with:
-          expo-version: latest
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 

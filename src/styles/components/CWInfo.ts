@@ -6,7 +6,7 @@ export default (context: IThemeContext) => {
     container: {
       width: '100%',
       height: 60,
-      borderRadius: 15,
+      borderRadius: 8,
       backgroundColor: context.colors.card,
       flexDirection: 'row',
       justifyContent: 'space-evenly',

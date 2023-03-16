@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Alert, Button, Linking, Platform, Text, View } from 'react-native';
+import { Alert, Button, Linking, Platform, Text, ScrollView, View } from 'react-native';
 import * as Location from 'expo-location';
 import * as IntentLauncher from 'expo-intent-launcher';
 import * as TaskManager from 'expo-task-manager';
 import OWMA from '../clients/OWMA';
-import CWWidget from '../components/CWWidget';
+import CWDetails from '../components/CWDetails';
 import CWInfo from '../components/CWInfo';
+import CWWidget from '../components/CWWidget';
 import GpsStyles from '../styles/screens/Gps';
 import ThemeContext from '../theme/context';
 import { IGpsProps, IGpsState } from '../types/screens/Gps';
@@ -18,6 +19,7 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
   constructor(props: IGpsProps) {
     super(props);
     this.state = {
+      conditions: undefined,
       events: {
         navigation: {
           focus: undefined,
@@ -31,7 +33,6 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
         data: undefined,
         message: undefined,
       },
-      conditions: undefined,
       search: '',
       tasks: {
         location: 'CURRENT_LOCATION',
@@ -86,7 +87,7 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
         this.setState({
           location: { ...this.state.location, enabled: locationEnabled },
         });
-        this.setWeatherLocation();
+        this.setWeatherByLocation();
         if (locationEnabled && foreground) {
           this.startForegroundUpdate();
         }
@@ -94,16 +95,24 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
     })();
   };
 
-  setWeatherLocation = async () => {
+  setWeatherByLocation = async () => {
     if (!this.state.location.data) return;
     if (this.state.conditions !== undefined) return;
     this.setState({
-      conditions: await OWMA.getCurrent({
-        coordinates: {
-          lat: this.state.location.data.coords.latitude,
-          lon: this.state.location.data.coords.longitude,
-        },
-      }),
+      conditions: {
+        current: await OWMA.getCurrent({
+          coordinates: {
+            lat: this.state.location.data.coords.latitude,
+            lon: this.state.location.data.coords.longitude,
+          },
+        }),
+        forecast: await OWMA.getForecast(10, {
+          coordinates: {
+            lat: this.state.location.data.coords.latitude,
+            lon: this.state.location.data.coords.longitude,
+          },
+        }),
+      },
       location: {
         ...this.state.location,
         data: {
@@ -143,7 +152,7 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
               data: { ...this.state.location.data, coords: location.coords, timestamp: location.timestamp },
             },
           });
-          await this.setWeatherLocation();
+          await this.setWeatherByLocation();
         }
       }
     });
@@ -186,7 +195,7 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
                 enabled: granted,
               },
             });
-            await this.setWeatherLocation();
+            await this.setWeatherByLocation();
           }
         );
       } catch (error) {
@@ -200,7 +209,7 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
               message: error.message,
             },
           });
-          await this.setWeatherLocation();
+          await this.setWeatherByLocation();
         }
       }
     }
@@ -211,7 +220,7 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
     if (hasStarted) {
       await Location.stopLocationUpdatesAsync(this.state.tasks.location);
       this.setState({ location: { ...this.state.location, data: undefined } });
-      await this.setWeatherLocation();
+      await this.setWeatherByLocation();
     }
   };
 
@@ -221,7 +230,7 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
       this.setState({
         location: { ...this.state.location, data: undefined, enabled: await Location.hasServicesEnabledAsync() },
       });
-      await this.setWeatherLocation();
+      await this.setWeatherByLocation();
     })();
   };
 
@@ -235,46 +244,44 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
   }
 
   render() {
-    if (this.state.conditions && this.state.location.data?.city) {
-      return (
-        <View style={GpsStyles(this.context).screen.style.container}>
-          <View style={GpsStyles(this.context).screen.style.content}>
-            <CWWidget
-              style={GpsStyles(this.context).weatherWidget}
-              data={{
-                city: this.state.location.data.city,
-                degrees: this.state.conditions.weather.temp.cur,
-                icon: this.state.conditions.weather.icon.url,
-              }}
-            />
-            <View>
-              <CWInfo data={this.state.conditions} style={GpsStyles(this.context).weatherInfo} />
-            </View>
-
-            <Text style={GpsStyles(this.context).screen.style.text}>
-              Open up ./src/screens/Gps.tsx to start working on your app!
-            </Text>
-            <Text>{`Searched: ${this.state.search}`}</Text>
-            <Text>{`Location: ${this.state.location.enabled}`}</Text>
-            {this.state.location.enabled && this.state.location.data && (
-              <View>
-                <Text>{`Latitude: ${this.state.location.data.coords.latitude}`}</Text>
-                <Text>{`Longitude: ${this.state.location.data.coords.longitude}`}</Text>
+    if (this.state.location.enabled === true) {
+      if (this.state.conditions && this.state.location.data?.city) {
+        return (
+          <ScrollView style={GpsStyles(this.context).screen.style.container}>
+            <View style={GpsStyles(this.context).screen.style.content}>
+              <CWWidget
+                style={GpsStyles(this.context).weatherWidget}
+                data={{
+                  city: this.state.location.data.city,
+                  degrees: this.state.conditions.current.weather.temp.cur,
+                  icon: this.state.conditions.current.weather.icon.url,
+                }}
+              />
+              <View style={GpsStyles(this.context).screen.style.contendInfo}>
+                <CWInfo data={this.state.conditions.current} style={GpsStyles(this.context).weatherInfo} />
               </View>
-            )}
-            <Button
-              title='Enable GPS'
-              onPress={() => {
-                this.setUpLocation();
-              }}
-            />
-            <Button
-              title='Get GPS'
-              onPress={() => {
-                console.log(this.state.location);
-              }}
-            />
-          </View>
+              <View>
+                <CWDetails data={this.state.conditions.forecast} style={GpsStyles(this.context).weatherDetails} />
+              </View>
+            </View>
+          </ScrollView>
+        );
+      }
+    } else if (this.state.location.enabled === false) {
+      return (
+        <View>
+          <Button
+            title='Enable GPS'
+            onPress={() => {
+              this.setUpLocation();
+            }}
+          />
+        </View>
+      );
+    } else {
+      return (
+        <View>
+          <Text>Loading</Text>
         </View>
       );
     }

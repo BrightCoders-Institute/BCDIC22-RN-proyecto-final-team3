@@ -1,4 +1,6 @@
 import { StyleSheet } from 'react-native';
+import CWDetailsComponent from '../../components/CWDetails';
+import CWDetailsStyle from '../components/CWDetails';
 import CWInfoComponent from '../../components/CWInfo';
 import CWInfoStyle from '../components/CWInfo';
 import CWWidgetComponent from '../../components/CWWidget';
@@ -11,8 +13,6 @@ export default (context: IThemeContext) => {
       style: StyleSheet.create({
         container: {
           flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
         },
         content: {
           marginHorizontal: 20,
@@ -20,13 +20,20 @@ export default (context: IThemeContext) => {
         text: {
           color: context.colors.text,
         },
+        contendInfo: {
+          paddingBottom: 15,
+          paddingTop: 15,
+        },
       }),
     },
-    weatherWidget: {
-      ...CWWidgetStyle(context),
-    } as CWWidgetComponent['props']['style'],
+    weatherDetails: {
+      ...CWDetailsStyle(context),
+    } as CWDetailsComponent['props']['style'],
     weatherInfo: {
       ...CWInfoStyle(context),
     } as CWInfoComponent['props']['style'],
+    weatherWidget: {
+      ...CWWidgetStyle(context),
+    } as CWWidgetComponent['props']['style'],
   };
 };
