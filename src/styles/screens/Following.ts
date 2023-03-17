@@ -1,4 +1,7 @@
 import { StyleSheet } from 'react-native';
+import CWCardComponent from '../../components/CWCard';
+import CWCardStyle from '../../styles/components/CWCard';
+
 import { IThemeContext } from '../../types/theme/context';
 
 export default (context: IThemeContext) => {
@@ -7,13 +10,12 @@ export default (context: IThemeContext) => {
       style: StyleSheet.create({
         container: {
           flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
         },
-        text: {
-          color: context.colors.text,
-        },
+        content: {},
       }),
     },
+    weatherCard: {
+      ...CWCardStyle(context),
+    } as CWCardComponent['props']['style'],
   };
 };

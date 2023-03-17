@@ -4,9 +4,9 @@ import { IThemeContext } from '../../types/theme/context';
 export default (context: IThemeContext) => {
   return {
     container: {
+      alignItems: 'center',
       backgroundColor: context.colors.card,
       borderRadius: 8,
-      alignItems: 'center',
       padding: 10,
     },
     title: {

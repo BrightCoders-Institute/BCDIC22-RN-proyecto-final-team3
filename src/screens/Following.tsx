@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Text, View } from 'react-native';
+import { FlatList, TouchableOpacity, View } from 'react-native';
+import CWCard from '../components/CWCard';
 import ThemeContext from '../theme/context';
 import FollowingStyles from '../styles/screens/Following';
 import { IFollowingProps, IFollowingState } from '../types/screens/Following';
@@ -30,16 +31,27 @@ export default class LogIn extends Component<IFollowingProps, IFollowingState> {
   render() {
     return (
       <View style={FollowingStyles(this.context).screen.style.container}>
-        <Text style={FollowingStyles(this.context).screen.style.text}>
-          Open up ./src/screens/Following.tsx to start working on your app!
-        </Text>
-        <Button
-          title={'Go to Details'}
-          onPress={() => {
-            this.props.navigation.navigate('Details');
-          }}
+        <FlatList
+          style={FollowingStyles(this.context).screen.style.content}
+          data={new Array(10)}
+          renderItem={() => (
+            <TouchableOpacity
+              style={{ marginVertical: 5, marginHorizontal: 20 }}
+              onPress={() => {
+                this.props.navigation.navigate('Details');
+              }}
+            >
+              <CWCard
+                style={FollowingStyles(this.context).weatherCard}
+                data={{
+                  city: 'Colima',
+                  degrees: 80,
+                  icon: 'https://www.losmundosdenoa.es/wp-content/uploads/2020/06/sol-e1603880900911.png',
+                }}
+              />
+            </TouchableOpacity>
+          )}
         />
-        <Text>{`Searched: ${this.state.search}`}</Text>
       </View>
     );
   }
