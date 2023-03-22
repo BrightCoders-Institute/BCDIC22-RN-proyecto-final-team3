@@ -13,6 +13,14 @@ export const themeMode = {
           background: colors.light.royalBlue,
           text: colors.general.white,
         },
+        added: {
+          background: colors.light.green,
+          text: colors.general.white,
+        },
+        notAdded: {
+          background: colors.light.bluesky,
+          text: colors.general.black,
+        },
       },
       buttonIcon: {
         default: {
@@ -45,6 +53,15 @@ export const themeMode = {
         default: {
           background: colors.dark.softBlue,
           text: colors.general.black,
+        },
+        added: {
+          background: colors.dark.green,
+          text: colors.general.black,
+        },
+        notAdded: {
+          background: colors.dark.blueGrey,
+          border: colors.general.white,
+          text: colors.general.white,
         },
       },
       buttonIcon: {

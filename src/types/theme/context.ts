@@ -8,6 +8,14 @@ export type IThemeContext = {
         background: string;
         text: string;
       };
+      added: {
+        background: string;
+        text: string;
+      };
+      notAdded: {
+        background: string;
+        text: string;
+      };
     };
     buttonIcon: {
       default: {
