@@ -25,7 +25,7 @@ export default class Details extends Component<IDetailsProps, IDetailsState> {
             this.setState({ following: !active });
             this.setUpAddButton(!active);
           }}
-          title={'Follow'}
+          title={active ? 'Following' : 'Follow'}
           style={active ? DetailsStyles(this.context).addedButton : DetailsStyles(this.context).notAddedButton}
         />
       ),

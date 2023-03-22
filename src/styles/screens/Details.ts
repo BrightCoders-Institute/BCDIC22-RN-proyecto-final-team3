@@ -39,14 +39,13 @@ export default (context: IThemeContext) => {
     } as CButtonComponent['props']['style'],
     notAddedButton: {
       ...CButtonStyle(context),
-      buttonColor: context.colors.button.notAdded.background,
+      buttonColor: 'transparent',
       textColor: context.colors.button.notAdded.text,
       icon: {
         source: 'plus-circle',
         direction: 'ltr',
       },
     } as CButtonComponent['props']['style'],
-
     weatherDetails: {
       ...CWDetailsStyle(context),
     } as CWDetailsComponent['props']['style'],
