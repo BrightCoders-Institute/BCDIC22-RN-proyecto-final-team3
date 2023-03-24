@@ -1,6 +1,6 @@
-import { ComponentProps } from 'react';
 import { StyleSheet } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import CButtonComponent from '../../components/CButton';
+import CButtonStyle from '../components/CButton';
 import { IThemeContext } from '../../types/theme/context';
 
 export default (context: IThemeContext) => {
@@ -12,6 +12,15 @@ export default (context: IThemeContext) => {
         },
         content: {
           marginHorizontal: 20,
+        },
+        imageContainer: {
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: 10,
+        },
+        image: {
+          width: 150,
+          height: 150,
         },
         dividerOff: {
           borderBottomWidth: 0,
@@ -26,11 +35,15 @@ export default (context: IThemeContext) => {
           color: context.colors.text,
         },
       }),
-      icon: {
-        color: context.colors.text as ComponentProps<typeof MaterialCommunityIcons>['color'],
-        size: 24 as ComponentProps<typeof MaterialCommunityIcons>['size'],
-        style: { alignSelf: 'center', marginRight: 8 } as ComponentProps<typeof MaterialCommunityIcons>['style'],
-      },
     },
+    logOutButton: {
+      ...CButtonStyle(context),
+      buttonColor: 'transparent',
+      textColor: 'red',
+      icon: {
+        source: 'logout',
+        direction: 'ltr',
+      },
+    } as CButtonComponent['props']['style'],
   };
 };

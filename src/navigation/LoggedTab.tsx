@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 
-import Settings from '../screens/Settings';
 import InGps from './InGps';
 import InFollowing from './InFollowing';
+import InSettings from './InSettings';
 
 import { RootStackParamList } from '../types/navigation/RootStackParamList';
 import { ILoggedTabProps } from '../types/navigation/LoggedTab';
@@ -46,10 +46,11 @@ export default class LoggedTab extends Component<ILoggedTabProps> {
           }}
         />
         <Tab.Screen
-          name='Settings'
-          component={Settings}
+          name='InSettings'
+          component={InSettings}
           options={{
             title: 'Settings',
+            headerShown: false,
             tabBarIcon: ({ color, size }) => <MaterialIcons name={'settings'} size={size} color={color} />,
           }}
         />
