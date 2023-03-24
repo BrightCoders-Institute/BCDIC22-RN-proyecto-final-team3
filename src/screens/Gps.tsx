@@ -40,20 +40,6 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
     };
   }
 
-  setUpSearch = () => {
-    this.props.navigation.setOptions({
-      headerSearchBarOptions: {
-        placeholder: 'Search',
-        onSearchButtonPress: (e) => {
-          this.setState({ search: e.nativeEvent.text });
-        },
-        onClose: () => {
-          this.setState({ search: '' });
-        },
-      },
-    });
-  };
-
   setUpLocation = async () => {
     const isLocationEnabled = await Location.hasServicesEnabledAsync();
     let isPermissionAllowed = await Location.getForegroundPermissionsAsync();
@@ -235,7 +221,6 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
   };
 
   async componentDidMount() {
-    this.setUpSearch();
     await this.setUpLocation();
   }
 
