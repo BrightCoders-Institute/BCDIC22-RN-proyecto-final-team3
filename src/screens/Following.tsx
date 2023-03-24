@@ -17,17 +17,6 @@ export default class LogIn extends Component<IFollowingProps, IFollowingState> {
     };
   }
 
-  componentDidMount() {
-    this.props.navigation.setOptions({
-      headerSearchBarOptions: {
-        placeholder: 'Search',
-        onSearchButtonPress: (e) => {
-          this.setState({ search: e.nativeEvent.text });
-        },
-      },
-    });
-  }
-
   render() {
     return (
       <View style={FollowingStyles(this.context).screen.style.container}>
