@@ -10,7 +10,7 @@ export default (context: IThemeContext) => {
       backgroundColor: context.colors.card,
       flexDirection: 'row',
       justifyContent: 'space-evenly',
-      paddingTop: 7,
+      paddingVertical: 10,
     },
     textCenter: {
       color: context.colors.text,
