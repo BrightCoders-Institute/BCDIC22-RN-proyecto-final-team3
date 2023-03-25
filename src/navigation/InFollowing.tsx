@@ -34,7 +34,7 @@ export default class InFollowing extends Component<IInFollowingProps> {
             tintColor: this.context.colors.text,
             hintTextColor: this.context.colors.text,
             onSearchButtonPress: (e) => {
-              this.props.navigation.navigate('Details', { search: e.nativeEvent.text });
+              this.props.navigation.navigate('Search', { search: e.nativeEvent.text });
             },
           },
         }}

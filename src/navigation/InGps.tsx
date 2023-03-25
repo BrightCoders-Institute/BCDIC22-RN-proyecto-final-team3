@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Details from '../screens/Details';
 import Gps from '../screens/Gps';
+import Search from '../screens/Search';
 
 import ThemeContext from '../theme/context';
 
@@ -34,7 +35,7 @@ export default class InGps extends Component<IInGpsProps> {
             tintColor: this.context.colors.text,
             hintTextColor: this.context.colors.text,
             onSearchButtonPress: (e) => {
-              this.props.navigation.navigate('Details', { search: e.nativeEvent.text });
+              this.props.navigation.navigate('Search', { search: e.nativeEvent.text });
             },
           },
         }}
@@ -52,6 +53,14 @@ export default class InGps extends Component<IInGpsProps> {
           component={Gps}
           options={{
             title: 'Gps',
+          }}
+        />
+        <Stack.Screen
+          name='Search'
+          component={Search}
+          options={{
+            title: 'Search',
+            headerBackVisible: false,
           }}
         />
       </Stack.Navigator>

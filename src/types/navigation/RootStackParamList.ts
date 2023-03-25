@@ -11,4 +11,5 @@ export type RootStackParamList = {
   LogIn: undefined;
   Settings: undefined;
   SignUp: undefined;
+  Search: { search: string };
 };
