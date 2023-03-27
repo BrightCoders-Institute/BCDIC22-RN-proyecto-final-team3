@@ -7,7 +7,7 @@ export default (context: IThemeContext) => {
       alignItems: 'center',
       backgroundColor: context.colors.card,
       borderRadius: 8,
-      padding: 10,
+      paddingVertical: 10,
     },
     title: {
       box: {

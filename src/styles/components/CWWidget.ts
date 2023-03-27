@@ -3,6 +3,11 @@ import { IThemeContext } from '../../types/theme/context';
 
 export default (context: IThemeContext) => {
   return {
+    container: {
+      backgroundColor: context.colors.card,
+      borderRadius: 8,
+      paddingVertical: 10,
+    },
     rowContainer: {
       flexDirection: 'row',
       justifyContent: 'center',

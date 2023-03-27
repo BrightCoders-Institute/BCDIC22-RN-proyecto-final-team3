@@ -10,7 +10,7 @@ export default class CWWidget extends Component<ICWWidgetProps> {
 
   render() {
     return (
-      <View>
+      <View style={this.props.style.container}>
         <View style={this.props.style.rowContainer}>
           <Image source={{ uri: this.props.data.icon }} style={this.props.style.image} />
         </View>
