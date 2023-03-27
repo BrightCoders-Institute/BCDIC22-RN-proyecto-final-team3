@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Details from '../screens/Details';
 import Following from '../screens/Following';
+import Search from '../screens/Search';
 
 import ThemeContext from '../theme/context';
 
@@ -24,19 +25,23 @@ export default class InFollowing extends Component<IInFollowingProps> {
     return (
       <Stack.Navigator
         initialRouteName='Following'
-        screenOptions={{
-          headerSearchBarOptions: {
-            placeholder: 'Search',
-            hideWhenScrolling: true,
-            shouldShowHintSearchIcon: false,
-            headerIconColor: this.context.colors.text,
-            textColor: this.context.colors.text,
-            tintColor: this.context.colors.text,
-            hintTextColor: this.context.colors.text,
-            onSearchButtonPress: (e) => {
-              this.props.navigation.navigate('Search', { search: e.nativeEvent.text });
+        screenOptions={({ navigation }) => {
+          return {
+            headerSearchBarOptions: {
+              placeholder: 'Search',
+              hideWhenScrolling: true,
+              shouldShowHintSearchIcon: false,
+              headerIconColor: this.context.colors.text,
+              textColor: this.context.colors.text,
+              tintColor: this.context.colors.text,
+              hintTextColor: this.context.colors.text,
+              onSearchButtonPress(e) {
+                navigation.navigate('Search', {
+                  search: e.nativeEvent.text,
+                });
+              },
             },
-          },
+          };
         }}
       >
         <Stack.Screen
@@ -52,6 +57,13 @@ export default class InFollowing extends Component<IInFollowingProps> {
           component={Following}
           options={{
             title: 'Following',
+          }}
+        />
+        <Stack.Screen
+          name='Search'
+          component={Search}
+          options={{
+            title: 'Search',
           }}
         />
       </Stack.Navigator>

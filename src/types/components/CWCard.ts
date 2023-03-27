@@ -4,6 +4,8 @@ export type ICWCardProps = {
   data: {
     icon: string;
     city: string;
+    state?: string;
+    country: string;
     degrees: number;
   };
   style: {

@@ -2,7 +2,7 @@ import { FlatListProps, ImageProps, ViewProps, TextProps } from 'react-native';
 import { ForecastWeather as OWMAForecastWeather } from 'openweather-api-node';
 
 export type ICWDetailsProps = {
-  data: OWMAForecastWeather[];
+  data: OWMAForecastWeather[] | undefined;
   style: {
     container: ViewProps['style'];
     title: {
