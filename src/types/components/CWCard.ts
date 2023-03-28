@@ -12,6 +12,8 @@ export type ICWCardProps = {
     container: ViewProps['style'];
     content: ViewProps['style'];
     icon: ImageProps['style'];
+    iconBox: ViewProps['style'];
+    textBox: ViewProps['style'];
     title: {
       city: TextProps['style'];
       degrees: TextProps['style'];

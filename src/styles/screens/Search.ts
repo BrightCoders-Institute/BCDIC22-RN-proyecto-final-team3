@@ -12,6 +12,7 @@ export default (context: IThemeContext) => {
           flex: 1,
         },
         content: {},
+        cardBox: { marginVertical: 5, marginHorizontal: 20 },
       }),
     },
     weatherCard: {

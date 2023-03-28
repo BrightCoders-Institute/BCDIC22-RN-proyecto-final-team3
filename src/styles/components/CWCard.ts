@@ -16,6 +16,8 @@ export default (context: IThemeContext) => {
       height: 100,
       width: 100,
     },
+    iconBox: { alignContent: 'center', width: '30%' },
+    textBox: { alignContent: 'center', flexShrink: 1, width: '70%' },
     title: {
       city: {
         color: context.colors.text,

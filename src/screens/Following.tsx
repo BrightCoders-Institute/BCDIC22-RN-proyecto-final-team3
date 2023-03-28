@@ -25,7 +25,7 @@ export default class LogIn extends Component<IFollowingProps, IFollowingState> {
           data={new Array(10)}
           renderItem={() => (
             <TouchableOpacity
-              style={{ marginVertical: 5, marginHorizontal: 20 }}
+              style={FollowingStyles(this.context).screen.style.cardBox}
               onPress={() => {
                 this.props.navigation.navigate('Details');
               }}

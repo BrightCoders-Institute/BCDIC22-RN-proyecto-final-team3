@@ -4,7 +4,7 @@ import { Location as OWMALocation } from 'openweather-api-node';
 import OWMA from '../clients/OWMA';
 import CWCard from '../components/CWCard';
 import ThemeContext from '../theme/context';
-import FollowingStyles from '../styles/screens/Following';
+import SearchStyles from '../styles/screens/Search';
 import { ISearchProps, ISearchState } from '../types/screens/Search';
 import { IThemeContext } from '../types/theme/context';
 
@@ -83,19 +83,19 @@ export default class Search extends Component<ISearchProps, ISearchState> {
 
   render() {
     return (
-      <View style={FollowingStyles(this.context).screen.style.container}>
+      <View style={SearchStyles(this.context).screen.style.container}>
         <FlatList
-          style={FollowingStyles(this.context).screen.style.content}
+          style={SearchStyles(this.context).screen.style.content}
           data={this.state.locations}
           renderItem={({ item }) => (
             <TouchableOpacity
-              style={{ marginVertical: 5, marginHorizontal: 20 }}
+              style={SearchStyles(this.context).screen.style.cardBox}
               onPress={() => {
                 this.props.navigation.navigate('Details', { location: JSON.stringify(item) });
               }}
             >
               <CWCard
-                style={FollowingStyles(this.context).weatherCard}
+                style={SearchStyles(this.context).weatherCard}
                 data={{
                   city: item.name,
                   state: item.state,
