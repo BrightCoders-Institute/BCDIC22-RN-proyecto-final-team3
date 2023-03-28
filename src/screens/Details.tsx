@@ -19,7 +19,6 @@ export default class Details extends Component<IDetailsProps, IDetailsState> {
     this.state = {
       following: false,
       location: undefined,
-      conditions: undefined
     };
   }
 
@@ -39,38 +38,18 @@ export default class Details extends Component<IDetailsProps, IDetailsState> {
   };
 
   getData = async () => {
-    this.setState({
-      location: await OWMA.getLocation({
-        coordinates: {
-          lat: 19.24997,
-          lon: -103.72714,
-        },
-      })
-    });
-    if (this.state.location) {
+    const location: typeof this.state.location = JSON.parse(this.props.route.params.location);
+    if (location) {
       this.setState({
-        location: await OWMA.getLocation({
-          coordinates: {
-            lat: 19.24997,
-            lon: -103.72714,
-          },
-        })
-      });
-      this.setState({
-        conditions: {
-          current: await OWMA.getCurrent({
-            coordinates: {
-              lat: 19.24997,
-              lon: -103.72714,
-            },
-          }),
+        location: {
+          ...location,
           forecast: await OWMA.getForecast(10, {
             coordinates: {
-              lat: 19.24997,
-              lon: -103.72714,
+              lat: location.lat,
+              lon: location.lon,
             },
-          })
-        }
+          }),
+        },
       });
     }
   };
@@ -81,7 +60,7 @@ export default class Details extends Component<IDetailsProps, IDetailsState> {
   }
 
   render() {
-    if (this.state.conditions && this.state.location) {
+    if (this.state.location?.conditions && this.state.location?.forecast) {
       return (
         <ScrollView style={DetailsStyles(this.context).screen.style.container}>
           <View style={DetailsStyles(this.context).screen.style.content}>
@@ -89,29 +68,19 @@ export default class Details extends Component<IDetailsProps, IDetailsState> {
               style={DetailsStyles(this.context).weatherWidget}
               data={{
                 city: this.state.location,
-                degrees: this.state.conditions.current.weather.temp.cur,
-                icon: this.state.conditions.current.weather.icon.url,
+                degrees: this.state.location.conditions.weather.temp.cur,
+                icon: this.state.location.conditions.weather.icon.url,
               }}
             />
             <View style={DetailsStyles(this.context).screen.style.contendInfo}>
-              <CWInfo data={this.state.conditions.current} style={DetailsStyles(this.context).weatherInfo} />
+              <CWInfo data={this.state.location.conditions} style={DetailsStyles(this.context).weatherInfo} />
             </View>
             <View>
-              <CWDetails data={this.state.conditions.forecast} style={DetailsStyles(this.context).weatherDetails} />
+              <CWDetails data={this.state.location.forecast} style={DetailsStyles(this.context).weatherDetails} />
             </View>
           </View>
         </ScrollView>
       );
     }
-
-
-
-
-
-
-
-
-
-    
   }
 }

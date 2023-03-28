@@ -1,5 +1,6 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { CurrentWeather as OWMACurrentWeather, ForecastWeather as OWMAForecastWeather, Location as OWMALocation} from 'openweather-api-node';
+import { ForecastWeather as OWMAForecastWeather } from 'openweather-api-node';
+import { OWMALocationAndWeather } from '../client/OWMA.js';
 
 import { RootStackParamList } from '../navigation/RootStackParamList';
 
@@ -7,9 +8,5 @@ export type IDetailsProps = NativeStackScreenProps<RootStackParamList, 'Details'
 
 export type IDetailsState = {
   following?: boolean;
-  location?: OWMALocation | null;
-  conditions?: {
-    current: OWMACurrentWeather;
-    forecast: OWMAForecastWeather[];
-  };
+  location?: OWMALocationAndWeather & { forecast?: OWMAForecastWeather[] };
 };

@@ -1,6 +1,6 @@
 export type RootStackParamList = {
   Account: undefined;
-  Details: undefined;
+  Details: { location: string };
   Following: undefined;
   Gps: undefined;
   InFollowing: undefined;
@@ -11,4 +11,5 @@ export type RootStackParamList = {
   LogIn: undefined;
   Settings: undefined;
   SignUp: undefined;
+  Search: { search: string };
 };
