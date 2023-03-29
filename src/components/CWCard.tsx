@@ -13,7 +13,7 @@ export default class CWCard extends Component<ICWCardProps> {
         <View style={this.props.style.content}>
           <View style={this.props.style.textBox}>
             <Text style={this.props.style.title.city}>
-              {this.props.data.city} {this.props.data.state ? this.props.data.state + ' ' : ''}
+              {this.props.data.city}, {this.props.data.state ? this.props.data.state + ' ' : ''}
               {this.props.data.country}
             </Text>
             <Text style={this.props.style.title.degrees}>{this.props.data.degrees?.toString()}°</Text>

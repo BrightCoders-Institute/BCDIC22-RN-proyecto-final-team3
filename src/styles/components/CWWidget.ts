@@ -18,6 +18,8 @@ export default (context: IThemeContext) => {
       height: 200,
     },
     textCity: {
+      width: '75%',
+      textAlign: 'center',
       fontSize: 40,
       marginHorizontal: 5,
       color: context.colors.text,
@@ -25,11 +27,6 @@ export default (context: IThemeContext) => {
     textDegrees: {
       fontSize: 50,
       fontWeight: '500',
-      color: context.colors.text,
-    },
-    icon: {
-      size: 24,
-      style: { marginHorizontal: 5 },
       color: context.colors.text,
     },
   } as CWWidget['props']['style'];
