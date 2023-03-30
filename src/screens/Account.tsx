@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { View, Image } from 'react-native';
 import { DataTable } from 'react-native-paper';
 import { EventRegister } from 'react-native-event-listeners';
+import auth from '@react-native-firebase/auth';
 import CButton from '../components/CButton';
+import { GoogleSignin } from '../firebase/config';
 import AccountStyles from '../styles/screens/Account';
 import ThemeContext from '../theme/context';
 import { IAccountProps } from '../types/screens/Account';
@@ -41,7 +43,12 @@ export default class Account extends Component<IAccountProps> {
                 <CButton
                   style={AccountStyles(this.context).logOutButton}
                   title='Logout'
-                  onPress={() => this.props.navigation.navigate('LogIn')}
+                  onPress={async () => {
+                    if (auth().currentUser?.providerData[0].providerId === 'google.com')
+                      await GoogleSignin.revokeAccess();
+                    await auth().signOut();
+                    this.props.navigation.navigate('InForms');
+                  }}
                 />
               </DataTable.Cell>
             </DataTable.Row>
