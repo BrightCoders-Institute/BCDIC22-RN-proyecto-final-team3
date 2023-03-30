@@ -9,7 +9,7 @@ export type ICWWidgetProps = {
     city: OWMALocation;
     degrees: number;
   };
-  style: {
+  style?: {
     container: ViewProps['style'];
     rowContainer: ViewProps['style'];
     image: ImageProps['style'];
