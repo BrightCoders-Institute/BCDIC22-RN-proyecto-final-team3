@@ -27,7 +27,12 @@ export default class Account extends Component<IAccountProps> {
       <View style={AccountStyles(this.context).screen.style.container}>
         <View style={AccountStyles(this.context).screen.style.content}>
           <View style={AccountStyles(this.context).screen.style.imageContainer}>
-            <Image style={AccountStyles(this.context).screen.style.image} source={require('../assets/usericon.png')} />
+            <Image
+              style={AccountStyles(this.context).screen.style.image}
+              source={
+                auth().currentUser?.photoURL ? { uri: auth().currentUser?.photoURL } : require('../assets/usericon.png')
+              }
+            />
           </View>
           <DataTable>
             <DataTable.Row style={AccountStyles(this.context).screen.style.dividerOff}>
@@ -35,7 +40,15 @@ export default class Account extends Component<IAccountProps> {
                 style={AccountStyles(this.context).screen.style.cellCenter}
                 textStyle={AccountStyles(this.context).screen.style.text}
               >
-                example@email.com
+                {auth().currentUser?.displayName}
+              </DataTable.Cell>
+            </DataTable.Row>
+            <DataTable.Row style={AccountStyles(this.context).screen.style.dividerOff}>
+              <DataTable.Cell
+                style={AccountStyles(this.context).screen.style.cellCenter}
+                textStyle={AccountStyles(this.context).screen.style.text}
+              >
+                {auth().currentUser?.email}
               </DataTable.Cell>
             </DataTable.Row>
             <DataTable.Row style={AccountStyles(this.context).screen.style.dividerOff}>
@@ -44,8 +57,9 @@ export default class Account extends Component<IAccountProps> {
                   style={AccountStyles(this.context).logOutButton}
                   title='Logout'
                   onPress={async () => {
-                    if (auth().currentUser?.providerData[0].providerId === 'google.com')
+                    if (auth().currentUser?.providerData[0].providerId === 'google.com') {
                       await GoogleSignin.revokeAccess();
+                    }
                     await auth().signOut();
                     this.props.navigation.navigate('InForms');
                   }}
