@@ -1,6 +1,8 @@
 import OpenWeatherMapAPI from 'openweather-api-node';
 import Constants from 'expo-constants';
 
+console.log(process.env.OPEN_WEATHER_MAP_API_KEY);
+
 const OWMA = new OpenWeatherMapAPI({
   units: 'metric',
 });
