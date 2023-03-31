@@ -48,8 +48,6 @@ export default class LogIn extends Component<ILogInProps, ILogInState> {
     } catch (error) {
       if (error instanceof Error) {
         Alert.alert('Error', error.message);
-      } else {
-        console.error(error);
       }
     }
   };
@@ -65,8 +63,6 @@ export default class LogIn extends Component<ILogInProps, ILogInState> {
     } catch (error) {
       if (error instanceof Error) {
         Alert.alert('Error', error.message);
-      } else {
-        console.error(error);
       }
     }
   };
