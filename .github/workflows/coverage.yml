@@ -10,6 +10,8 @@ jobs:
   collect-and-upload-coverage:
     name: Run tests, collect and upload coverage
     runs-on: ubuntu-latest
+    env:
+      OPEN_WEATHER_MAP_API_KEY: ${{ secrets.OPEN_WEATHER_MAP_API_KEY }}
     steps:
       - name: 🏗️ Setup repo
         uses: actions/checkout@v2
