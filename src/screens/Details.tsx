@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, View } from 'react-native';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 import OWMA from '../clients/OWMA';
 import CButton from '../components/CButton';
 import CWWidget from '../components/CWWidget';
@@ -22,13 +24,58 @@ export default class Details extends Component<IDetailsProps, IDetailsState> {
     };
   }
 
+  followLocation = async () => {
+    await firestore()
+      .collection('users')
+      .doc(auth().currentUser?.uid)
+      .collection('following')
+      .add({
+        country: this.state.location?.country,
+        lat: this.state.location?.lat,
+        lon: this.state.location?.lon,
+        name: this.state.location?.name,
+        state: this.state.location?.state || '',
+      });
+  };
+
+  unfollowLocation = async () => {
+    const querySnapshot = await firestore()
+      .collection('users')
+      .doc(auth().currentUser?.uid)
+      .collection('following')
+      .where('country', '==', this.state.location?.country)
+      .where('lat', '==', this.state.location?.lat)
+      .where('lon', '==', this.state.location?.lon)
+      .where('name', '==', this.state.location?.name)
+      .where('state', '==', this.state.location?.state || '')
+      .get();
+    for (const doc of querySnapshot.docs) {
+      doc.ref.delete();
+    }
+  };
+
+  checkFollowing = async () => {
+    const querySnapshot = await firestore()
+      .collection('users')
+      .doc(auth().currentUser?.uid)
+      .collection('following')
+      .where('country', '==', this.state.location?.country)
+      .where('lat', '==', this.state.location?.lat)
+      .where('lon', '==', this.state.location?.lon)
+      .where('name', '==', this.state.location?.name)
+      .where('state', '==', this.state.location?.state || '')
+      .get();
+    this.setState({ following: querySnapshot.docs.length > 0 });
+  };
+
   setUpAddButton = (active?: boolean) => {
     this.props.navigation.setOptions({
       headerRight: () => (
         <CButton
-          onPress={() => {
+          onPress={async () => {
             this.setState({ following: !active });
             this.setUpAddButton(!active);
+            active ? await this.unfollowLocation() : await this.followLocation();
           }}
           title={active ? 'Following' : 'Follow'}
           style={active ? DetailsStyles(this.context).addedButton : DetailsStyles(this.context).notAddedButton}
@@ -37,7 +84,7 @@ export default class Details extends Component<IDetailsProps, IDetailsState> {
     });
   };
 
-  getData = async () => {
+  getLocationConditions = async () => {
     const location: typeof this.state.location = JSON.parse(this.props.route.params.location);
     if (location) {
       this.setState({
@@ -55,8 +102,9 @@ export default class Details extends Component<IDetailsProps, IDetailsState> {
   };
 
   async componentDidMount() {
+    await this.getLocationConditions();
+    await this.checkFollowing();
     this.setUpAddButton(this.state.following);
-    await this.getData();
   }
 
   render() {
