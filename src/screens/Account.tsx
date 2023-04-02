@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { Alert, View, Image } from 'react-native';
 import { DataTable } from 'react-native-paper';
 import { EventRegister } from 'react-native-event-listeners';
 import auth from '@react-native-firebase/auth';
@@ -56,12 +56,23 @@ export default class Account extends Component<IAccountProps> {
                 <CButton
                   style={AccountStyles(this.context).logOutButton}
                   title='Logout'
-                  onPress={async () => {
-                    if (auth().currentUser?.providerData[0].providerId === 'google.com') {
-                      await GoogleSignin.revokeAccess();
-                    }
-                    await auth().signOut();
-                    this.props.navigation.navigate('InForms');
+                  onPress={() => {
+                    Alert.alert('Logout', 'Are you sure you want to logout?', [
+                      { text: 'Cancel', style: 'destructive' },
+                      {
+                        text: 'Accept',
+                        style: 'default',
+                        onPress: async () => {
+                          if (auth().currentUser) {
+                            if (auth().currentUser?.providerData[0].providerId === 'google.com') {
+                              await GoogleSignin.revokeAccess();
+                            }
+                            await auth().signOut();
+                          }
+                          this.props.navigation.navigate('InForms');
+                        },
+                      },
+                    ]);
                   }}
                 />
               </DataTable.Cell>
