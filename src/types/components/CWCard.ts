@@ -8,7 +8,7 @@ export type ICWCardProps = {
     country: string;
     degrees: number;
   };
-  style: {
+  style?: {
     container: ViewProps['style'];
     content: ViewProps['style'];
     icon: ImageProps['style'];

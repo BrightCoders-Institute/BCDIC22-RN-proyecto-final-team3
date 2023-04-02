@@ -20,6 +20,7 @@ export default (context: IThemeContext) => {
     textBox: { alignContent: 'center', flexShrink: 1, width: '70%' },
     title: {
       city: {
+        width: '75%',
         color: context.colors.text,
         fontSize: 20,
         flexShrink: 1,

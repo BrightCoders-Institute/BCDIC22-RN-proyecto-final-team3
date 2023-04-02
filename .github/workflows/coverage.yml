@@ -1,5 +1,11 @@
 name: Coverage
-on: [pull_request, push, workflow_dispatch]
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
 jobs:
   collect-and-upload-coverage:
     name: Run tests, collect and upload coverage
@@ -11,7 +17,7 @@ jobs:
       - name: 🏗️ Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
           cache: npm
 
       - name: 📦 Install dependencies
