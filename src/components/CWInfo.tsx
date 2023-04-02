@@ -9,22 +9,22 @@ export default class CWInfo extends Component<ICWInfoProps> {
 
   render() {
     return (
-      <View style={this.props.style.container}>
+      <View style={this.props.style?.container}>
         <View>
-          <Text style={this.props.style.textCenterSpace}>TIME</Text>
-          <Text style={this.props.style.textCenter}>{this.props.data.weather.main}</Text>
+          <Text style={this.props.style?.textCenterSpace}>TIME</Text>
+          <Text style={this.props.style?.textCenter}>{this.props.data.weather.main}</Text>
         </View>
         <View>
-          <Text style={this.props.style.textCenterSpace}>HUMIDITY</Text>
-          <Text style={this.props.style.textCenter}>{this.props.data.weather.humidity}%</Text>
+          <Text style={this.props.style?.textCenterSpace}>HUMIDITY</Text>
+          <Text style={this.props.style?.textCenter}>{this.props.data.weather.humidity}%</Text>
         </View>
         <View>
-          <Text style={this.props.style.textCenterSpace}>RAIN</Text>
-          <Text style={this.props.style.textCenter}>{this.props.data.weather.rain}%</Text>
+          <Text style={this.props.style?.textCenterSpace}>RAIN</Text>
+          <Text style={this.props.style?.textCenter}>{this.props.data.weather.rain}%</Text>
         </View>
         <View>
-          <Text style={this.props.style.textCenterSpace}>PRESSURE</Text>
-          <Text style={this.props.style.textCenter}>{this.props.data.weather.pressure}</Text>
+          <Text style={this.props.style?.textCenterSpace}>PRESSURE</Text>
+          <Text style={this.props.style?.textCenter}>{this.props.data.weather.pressure}</Text>
         </View>
       </View>
     );

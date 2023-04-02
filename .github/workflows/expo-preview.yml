@@ -7,6 +7,10 @@ jobs:
   preview:
     name: Preview
     runs-on: ubuntu-latest
+    env:
+      GOOGLE_SERVICES_DATA: ${{ secrets.GOOGLE_SERVICES_DATA }}
+      GOOGLE_SERVICES_JSON_PATH: ${{ secrets.GOOGLE_SERVICES_JSON_PATH }}
+      OPEN_WEATHER_MAP_API_KEY: ${{ secrets.OPEN_WEATHER_MAP_API_KEY }}
     permissions:
       pull-requests: write
     steps:
