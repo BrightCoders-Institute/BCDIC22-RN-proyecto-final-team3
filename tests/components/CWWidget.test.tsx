@@ -1,32 +1,30 @@
 import React from 'react';
-import { act, create, ReactTestRenderer } from 'react-test-renderer';
+import { create, ReactTestRenderer } from 'react-test-renderer';
 import CWWidget from '../../src/components/CWWidget';
-import { Location } from 'openweather-api-node';
+import OWMA from '../../src/clients/OWMA';
 
 describe('<CWWidget />', () => {
-  jest.useFakeTimers();
-  global.setImmediate = jest.useRealTimers as unknown as typeof setImmediate;
-
-  const loc: Location = { name: 'colima', local_names: '', lat: 123, lon: 23, country: 'mexico', state: 'test' };
+  let data: CWWidget['props']['data'];
   let widget: ReactTestRenderer;
-  beforeAll(() => {
-    widget = create(
-      <CWWidget
-        data={{
-          icon: 'https://i.pinimg.com/originals/28/86/83/28868304bab40f1dd46788e3d1a5f7fc.png',
-          city: loc,
-          degrees: 2,
-        }}
-      />
-    );
+  beforeAll(async () => {
+    const weather = await OWMA.getCurrent({ locationName: 'Colima' });
+    const location = await OWMA.getLocation({ locationName: 'Colima' });
+    if (location && weather) {
+      data = {
+        icon: weather.weather.icon.url,
+        location: location,
+        degrees: weather.weather.temp.cur,
+      };
+      widget = create(<CWWidget data={data} />);
+    }
   });
-
   it('has a icon', () => {
-    expect(widget.getInstance()?.props.data.icon).toBe(
-      'https://i.pinimg.com/originals/28/86/83/28868304bab40f1dd46788e3d1a5f7fc.png'
-    );
+    expect(widget.getInstance()?.props.data.icon).toEqual(expect.any(String));
+  });
+  it('has a location', () => {
+    expect(widget.getInstance()?.props.data.location).toBeDefined();
   });
   it('has a degrees', () => {
-    expect(widget.getInstance()?.props.data.degrees).toBe(2);
+    expect(widget.getInstance()?.props.data.degrees).toEqual(expect.any(Number));
   });
 });

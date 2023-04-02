@@ -237,7 +237,7 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
               <CWWidget
                 style={GpsStyles(this.context).weatherWidget}
                 data={{
-                  city: this.state.location.data.city,
+                  location: this.state.location.data.city,
                   degrees: this.state.conditions.current.weather.temp.cur,
                   icon: this.state.conditions.current.weather.icon.url,
                 }}

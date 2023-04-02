@@ -15,8 +15,8 @@ export default class CWWidget extends Component<ICWWidgetProps> {
         </View>
         <View style={this.props.style?.rowContainer}>
           <Text style={this.props.style?.textCity}>
-            {this.props.data.city.name} {this.props.data.city.state ? this.props.data.city.state + ' ' : ''}
-            {this.props.data.city.country}
+            {this.props.data.location.name} {this.props.data.location.state ? this.props.data.location.state + ' ' : ''}
+            {this.props.data.location.country}
           </Text>
         </View>
         <View style={this.props.style?.rowContainer}>

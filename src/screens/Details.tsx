@@ -67,7 +67,7 @@ export default class Details extends Component<IDetailsProps, IDetailsState> {
             <CWWidget
               style={DetailsStyles(this.context).weatherWidget}
               data={{
-                city: this.state.location,
+                location: this.state.location,
                 degrees: this.state.location.conditions.weather.temp.cur,
                 icon: this.state.location.conditions.weather.icon.url,
               }}
