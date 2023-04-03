@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 /*
  * For a detailed explanation regarding each configuration property, visit:
  * https://jestjs.io/docs/configuration
@@ -131,7 +134,7 @@ export default {
   ],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  //setupFilesAfterEnv: ['./jest/setupAfterEnv.ts'],
+  // setupFilesAfterEnv: ['./jest/setupAfterEnv.ts'],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
