@@ -3,7 +3,7 @@ import { ForecastWeather as OWMAForecastWeather } from 'openweather-api-node';
 
 export type ICWDetailsProps = {
   data: OWMAForecastWeather[] | undefined;
-  style: {
+  style?: {
     container: ViewProps['style'];
     title: {
       box: ViewProps['style'];
