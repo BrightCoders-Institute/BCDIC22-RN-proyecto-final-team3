@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { Image, View, Text } from 'react-native';
+import { Alert, Image, View, Text } from 'react-native';
+import auth from '@react-native-firebase/auth';
 import { Formik } from 'formik';
 import CButton from '../components/CButton';
 import CButtonIcon from '../components/CButtonIcon';
 import CTextInput from '../components/CTextInput';
+import { GoogleSignin } from '../firebase/config';
 import validator from '../functions/validator';
-import ThemeContext from '../theme/context';
 import LogInStyles from '../styles/screens/LogIn';
+import ThemeContext from '../theme/context';
 import { ILogInProps, ILogInState, ILogInFormikProps } from '../types/screens/LogIn';
 import { IThemeContext } from '../types/theme/context';
 
@@ -38,6 +40,33 @@ export default class LogIn extends Component<ILogInProps, ILogInState> {
       : true;
   };
 
+  onEmailLogIn = async (formikProps: ILogInFormikProps) => {
+    try {
+      await auth().signInWithEmailAndPassword(formikProps.values.email, formikProps.values.password);
+      formikProps.handleSubmit();
+      this.props.navigation.navigate('LoggedTab');
+    } catch (error) {
+      if (error instanceof Error) {
+        Alert.alert('Error', error.message);
+      }
+    }
+  };
+
+  onGoogleLogIn = async (formikProps: ILogInFormikProps) => {
+    try {
+      await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+      const idToken = (await GoogleSignin.signIn()).idToken;
+      const credential = auth.GoogleAuthProvider.credential(idToken);
+      await auth().signInWithCredential(credential);
+      formikProps.handleSubmit();
+      this.props.navigation.navigate('LoggedTab');
+    } catch (error) {
+      if (error instanceof Error) {
+        Alert.alert('Error', error.message);
+      }
+    }
+  };
+
   render() {
     return (
       <View style={LogInStyles(this.context).screen.style.container}>
@@ -48,7 +77,6 @@ export default class LogIn extends Component<ILogInProps, ILogInState> {
               formikHelpers.resetForm();
               validator.email.clear();
               validator.password.clear();
-              this.props.navigation.navigate('LoggedTab');
             }}
           >
             {(formikProps) => (
@@ -78,8 +106,8 @@ export default class LogIn extends Component<ILogInProps, ILogInState> {
                 />
                 <CButton
                   disabled={this.loginButtonValidator(formikProps)}
-                  onPress={() => {
-                    formikProps.handleSubmit();
+                  onPress={async () => {
+                    await this.onEmailLogIn(formikProps);
                   }}
                   style={LogInStyles(this.context).commonLoginButton}
                   title={'Log in'}
@@ -109,8 +137,8 @@ export default class LogIn extends Component<ILogInProps, ILogInState> {
                     <CButtonIcon
                       disabled={false}
                       name={'google'}
-                      onPress={() => {
-                        formikProps.handleSubmit();
+                      onPress={async () => {
+                        await this.onGoogleLogIn(formikProps);
                       }}
                       style={LogInStyles(this.context).googleLoginButton}
                     />
