@@ -9,18 +9,18 @@ export default class CWWidget extends Component<ICWWidgetProps> {
 
   render() {
     return (
-      <View style={this.props.style.container}>
-        <View style={this.props.style.rowContainer}>
-          <Image source={{ uri: this.props.data.icon }} style={this.props.style.image} />
+      <View style={this.props.style?.container}>
+        <View style={this.props.style?.rowContainer}>
+          <Image source={{ uri: this.props.data.icon }} style={this.props.style?.image} />
         </View>
-        <View style={this.props.style.rowContainer}>
-          <Text style={this.props.style.textCity}>
-            {this.props.data.city.name} {this.props.data.city.state ? this.props.data.city.state + ' ' : ''}
-            {this.props.data.city.country}
+        <View style={this.props.style?.rowContainer}>
+          <Text style={this.props.style?.textCity}>
+            {this.props.data.location.name} {this.props.data.location.state ? this.props.data.location.state + ' ' : ''}
+            {this.props.data.location.country}
           </Text>
         </View>
-        <View style={this.props.style.rowContainer}>
-          <Text style={this.props.style.textDegrees}>{this.props.data.degrees.toString()}°</Text>
+        <View style={this.props.style?.rowContainer}>
+          <Text style={this.props.style?.textDegrees}>{this.props.data.degrees.toString()}°</Text>
         </View>
       </View>
     );
