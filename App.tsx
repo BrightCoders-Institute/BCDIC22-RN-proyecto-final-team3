@@ -5,6 +5,8 @@ import { StatusBar } from 'expo-status-bar';
 import * as SystemUI from 'expo-system-ui';
 import { EventRegister } from 'react-native-event-listeners';
 import { NavigationContainer } from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 import { themeMode, navigationThemeMode } from './src/theme/themes';
 import ThemeContext from './src/theme/context';
 import Navigation from './src/navigation/Index';
@@ -29,11 +31,22 @@ export default class App extends Component<object, IAppState> {
     return EventRegister.addEventListener('changeTheme', (mode: string) => this.setTheme(mode));
   };
 
+  logInListener = () => {
+    return auth().onAuthStateChanged(async (user) => {
+      if (user) {
+        const querySnapshot = await firestore().collection('users').doc(auth().currentUser?.uid).get();
+        EventRegister.emit('changeTheme', querySnapshot.data()?.settings.theme);
+      }
+    });
+  };
+
   componentDidMount() {
     this.setTheme(this.state.mode);
     const changeThemeListener = this.changeThemeListener();
+    const logInListener = this.logInListener();
     return () => {
       if (typeof changeThemeListener === 'string') EventRegister.removeEventListener(changeThemeListener);
+      if (typeof logInListener === 'function') logInListener();
     };
   }
 

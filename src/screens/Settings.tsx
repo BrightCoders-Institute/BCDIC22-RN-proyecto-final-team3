@@ -3,6 +3,8 @@ import { Switch, View, TouchableOpacity, Text } from 'react-native';
 import { DataTable } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { EventRegister } from 'react-native-event-listeners';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 import SettingsStyles from '../styles/screens/Settings';
 import ThemeContext from '../theme/context';
 import { ISettingsProps } from '../types/screens/Settings';
@@ -16,8 +18,17 @@ export default class Settings extends Component<ISettingsProps> {
     super(props);
   }
 
-  onThemeChange = (value: boolean) => {
+  onThemeChange = async (value: boolean) => {
     EventRegister.emit('changeTheme', value ? 'dark' : 'light');
+    await this.saveOnFirebase(value ? 'dark' : 'light');
+  };
+
+  saveOnFirebase = async (theme: 'dark' | 'light') => {
+    await firestore().collection('users').doc(auth().currentUser?.uid).set({
+      settings: {
+        theme,
+      },
+    });
   };
 
   render() {
@@ -47,7 +58,7 @@ export default class Settings extends Component<ISettingsProps> {
               />
               <DataTable.Cell textStyle={SettingsStyles(this.context).screen.style.text}>DarkMode</DataTable.Cell>
               <DataTable.Cell style={SettingsStyles(this.context).screen.style.cellEnd}>
-                <Switch value={this.context.isDark} onValueChange={this.onThemeChange} />
+                <Switch value={this.context.isDark} onValueChange={async (value) => await this.onThemeChange(value)} />
               </DataTable.Cell>
             </DataTable.Row>
           </DataTable>
