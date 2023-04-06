@@ -16,7 +16,7 @@ export default class CWCard extends Component<ICWCardProps> {
               {this.props.data.city} {this.props.data.state ? this.props.data.state + ' ' : ''}
               {this.props.data.country}
             </Text>
-            <Text style={this.props.style?.title.degrees}>{this.props.data.degrees?.toString()}°</Text>
+            <Text style={this.props.style?.title.degrees}>{Math.trunc(this.props.data.degrees)}° C</Text>
           </View>
           <View style={this.props.style?.iconBox}>
             <Image style={this.props.style?.icon} source={{ uri: this.props.data.icon }} />

@@ -23,7 +23,7 @@ export default class CWDetails extends Component<ICWDetailsProps> {
             <View>
               <Text style={this.props.style?.item.day}>{moment(item.dt).format('ddd')}</Text>
               <Image style={this.props.style?.item.icon} source={{ uri: item.weather.icon.url }} />
-              <Text style={this.props.style?.item.degrees}>{item.weather.temp.cur}°</Text>
+              <Text style={this.props.style?.item.degrees}>{Math.trunc(item.weather.temp.cur)}° C</Text>
               <Text style={this.props.style?.item.time}>{moment(item.dt).format('HH:mm')}</Text>
             </View>
           )}

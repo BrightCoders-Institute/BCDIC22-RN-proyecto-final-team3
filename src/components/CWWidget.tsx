@@ -20,7 +20,7 @@ export default class CWWidget extends Component<ICWWidgetProps> {
           </Text>
         </View>
         <View style={this.props.style?.rowContainer}>
-          <Text style={this.props.style?.textDegrees}>{this.props.data.degrees.toString()}°</Text>
+          <Text style={this.props.style?.textDegrees}>{Math.trunc(this.props.data.degrees)}° C</Text>
         </View>
       </View>
     );
