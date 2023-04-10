@@ -39,7 +39,6 @@ The WWU app is very easy to use. Open the app, enable location and then you will
 - :sparkles: Add and delete following.
 - :sparkles: The weather forecast is very reliable and accurate.
 - :sparkles: Add and track weather report from multiple locations around the world.
-- :sparkles: Multi-unit configuration. No temperature change between Celsius and Fahrenheit.
 - :sparkles: The weather, humidity, rainfall probability and pressure provide a reference of the day's data.
 - :sparkles: Set the dark theme.
 - :sparkles: Synced with email or Google account.
