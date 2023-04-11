@@ -14,6 +14,7 @@ export type ICWDetailsProps = {
       contentContainerStyle: FlatListProps<OWMAForecastWeather[]>['contentContainerStyle'];
     };
     item: {
+      box: ViewProps['style'];
       day: TextProps['style'];
       icon: ImageProps['style'];
       degrees: TextProps['style'];

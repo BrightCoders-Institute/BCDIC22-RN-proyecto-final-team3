@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import { ICWWidgetProps } from '../types/components/CWWidget';
+import icons from '../constants/icons';
 
 export default class CWWidget extends Component<ICWWidgetProps> {
   constructor(props: ICWWidgetProps) {
@@ -11,7 +12,7 @@ export default class CWWidget extends Component<ICWWidgetProps> {
     return (
       <View style={this.props.style?.container}>
         <View style={this.props.style?.rowContainer}>
-          <Image source={{ uri: this.props.data.icon }} style={this.props.style?.image} />
+          <Image source={icons[this.props.data.icon as keyof typeof icons]} style={this.props.style?.image} />
         </View>
         <View style={this.props.style?.rowContainer}>
           <Text style={this.props.style?.textCity}>

@@ -11,7 +11,7 @@ describe('<CWWidget />', () => {
     const location = await OWMA.getLocation({ locationName: 'Colima' });
     if (location && weather) {
       data = {
-        icon: weather.weather.icon.url,
+        icon: weather.weather.icon.raw,
         location: location,
         degrees: weather.weather.temp.cur,
       };
@@ -19,7 +19,7 @@ describe('<CWWidget />', () => {
     }
   });
   it('has a icon', () => {
-    expect(widget.getInstance()?.props.data.icon).toEqual(expect.any(String));
+    expect(widget.getInstance()?.props.data.icon).toBeDefined();
   });
   it('has a location', () => {
     expect(widget.getInstance()?.props.data.location).toBeDefined();

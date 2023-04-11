@@ -13,8 +13,8 @@ export default (context: IThemeContext) => {
       padding: 10,
     },
     icon: {
-      height: 100,
-      width: 100,
+      height: 80,
+      width: 80,
     },
     iconBox: { alignContent: 'center', width: '30%' },
     textBox: { alignContent: 'center', flexShrink: 1, width: '70%' },

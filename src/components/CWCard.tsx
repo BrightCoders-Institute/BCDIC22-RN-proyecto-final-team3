@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import { ICWCardProps } from '../types/components/CWCard';
+import icons from '../constants/icons';
 
 export default class CWCard extends Component<ICWCardProps> {
   constructor(props: ICWCardProps) {
@@ -19,7 +20,7 @@ export default class CWCard extends Component<ICWCardProps> {
             <Text style={this.props.style?.title.degrees}>{Math.trunc(this.props.data.degrees)}° C</Text>
           </View>
           <View style={this.props.style?.iconBox}>
-            <Image style={this.props.style?.icon} source={{ uri: this.props.data.icon }} />
+            <Image style={this.props.style?.icon} source={icons[this.props.data.icon as keyof typeof icons]} />
           </View>
         </View>
       </View>
