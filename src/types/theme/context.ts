@@ -36,6 +36,7 @@ export type IThemeContext = {
       };
     };
     link: string;
+    loading: string;
     text: string;
   };
 };

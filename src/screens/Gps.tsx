@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Button, Linking, Platform, Text, ScrollView, View } from 'react-native';
+import { ActivityIndicator, Alert, Button, Linking, Platform, ScrollView, View } from 'react-native';
 import * as Location from 'expo-location';
 import * as IntentLauncher from 'expo-intent-launcher';
 import * as TaskManager from 'expo-task-manager';
@@ -229,29 +229,27 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
   }
 
   render() {
-    if (this.state.location.enabled === true) {
-      if (this.state.conditions && this.state.location.data?.city) {
-        return (
-          <ScrollView style={GpsStyles(this.context).screen.style.container}>
-            <View style={GpsStyles(this.context).screen.style.content}>
-              <CWWidget
-                style={GpsStyles(this.context).weatherWidget}
-                data={{
-                  location: this.state.location.data.city,
-                  degrees: this.state.conditions.current.weather.temp.cur,
-                  icon: this.state.conditions.current.weather.icon.raw,
-                }}
-              />
-              <View style={GpsStyles(this.context).screen.style.contendInfo}>
-                <CWInfo data={this.state.conditions.current} style={GpsStyles(this.context).weatherInfo} />
-              </View>
-              <View>
-                <CWDetails data={this.state.conditions.forecast} style={GpsStyles(this.context).weatherDetails} />
-              </View>
+    if (this.state.location.enabled === true && this.state.conditions && this.state.location.data?.city) {
+      return (
+        <ScrollView style={GpsStyles(this.context).screen.style.container}>
+          <View style={GpsStyles(this.context).screen.style.content}>
+            <CWWidget
+              style={GpsStyles(this.context).weatherWidget}
+              data={{
+                location: this.state.location.data.city,
+                degrees: this.state.conditions.current.weather.temp.cur,
+                icon: this.state.conditions.current.weather.icon.raw,
+              }}
+            />
+            <View style={GpsStyles(this.context).screen.style.contendInfo}>
+              <CWInfo data={this.state.conditions.current} style={GpsStyles(this.context).weatherInfo} />
             </View>
-          </ScrollView>
-        );
-      }
+            <View>
+              <CWDetails data={this.state.conditions.forecast} style={GpsStyles(this.context).weatherDetails} />
+            </View>
+          </View>
+        </ScrollView>
+      );
     } else if (this.state.location.enabled === false) {
       return (
         <View>
@@ -265,8 +263,8 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
       );
     } else {
       return (
-        <View>
-          <Text>Loading</Text>
+        <View style={GpsStyles(this.context).screen.style.loadingBox}>
+          <ActivityIndicator size={'large'} color={this.context.colors.loading} />
         </View>
       );
     }
