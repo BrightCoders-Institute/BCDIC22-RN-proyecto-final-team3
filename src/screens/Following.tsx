@@ -65,7 +65,7 @@ export default class LogIn extends Component<IFollowingProps, IFollowingState> {
                   state: item.state,
                   country: item.country,
                   degrees: item.conditions.weather.temp.cur,
-                  icon: item.conditions.weather.icon.url,
+                  icon: item.conditions.weather.icon.raw,
                 }}
               />
             </TouchableOpacity>

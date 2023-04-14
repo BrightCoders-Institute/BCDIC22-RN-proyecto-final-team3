@@ -14,8 +14,8 @@ export default (context: IThemeContext) => {
       alignItems: 'center',
     },
     image: {
-      width: 200,
-      height: 200,
+      width: 150,
+      height: 150,
     },
     textCity: {
       width: '75%',

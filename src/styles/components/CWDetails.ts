@@ -21,8 +21,9 @@ export default (context: IThemeContext) => {
       contentContainerStyle: { flexGrow: 1, justifyContent: 'space-evenly' },
     },
     item: {
+      box: { marginHorizontal: 10 },
       day: { color: context.colors.text, textAlign: 'center', marginVertical: 5 },
-      icon: { height: 70, width: 70, marginVertical: 5 },
+      icon: { height: 50, width: 50, marginVertical: 5 },
       degrees: { color: context.colors.text, textAlign: 'center', marginVertical: 5 },
       time: { color: context.colors.text, textAlign: 'center', marginVertical: 5 },
     },

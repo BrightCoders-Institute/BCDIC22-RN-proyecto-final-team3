@@ -117,7 +117,7 @@ export default class Details extends Component<IDetailsProps, IDetailsState> {
               data={{
                 location: this.state.location,
                 degrees: this.state.location.conditions.weather.temp.cur,
-                icon: this.state.location.conditions.weather.icon.url,
+                icon: this.state.location.conditions.weather.icon.raw,
               }}
             />
             <View style={DetailsStyles(this.context).screen.style.contendInfo}>
