@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { Location as OWMALocation } from 'openweather-api-node';
 import OWMA from '../clients/OWMA';
 import CWCard from '../components/CWCard';
@@ -36,6 +36,7 @@ export default class Search extends Component<ISearchProps, ISearchState> {
           });
         }),
       },
+      results: undefined,
     };
   }
 
@@ -59,7 +60,7 @@ export default class Search extends Component<ISearchProps, ISearchState> {
   getLocationAndConditions = async () => {
     const locations = await this.getLocations(this.state.search);
     const locationsAndConditions = await this.getConditions(locations);
-    this.setState({ locations: locationsAndConditions });
+    this.setState({ locations: locationsAndConditions, results: locationsAndConditions.length > 0 });
   };
 
   async componentDidMount() {
@@ -74,7 +75,7 @@ export default class Search extends Component<ISearchProps, ISearchState> {
         tintColor: this.context.colors.text,
         hintTextColor: this.context.colors.text,
         onSearchButtonPress: async (e) => {
-          await this.setState({ search: e.nativeEvent.text });
+          await this.setState({ search: e.nativeEvent.text, results: undefined });
           await this.getLocationAndConditions();
         },
       },
@@ -82,32 +83,46 @@ export default class Search extends Component<ISearchProps, ISearchState> {
   }
 
   render() {
-    return (
-      <View style={SearchStyles(this.context).screen.style.container}>
-        <FlatList
-          style={SearchStyles(this.context).screen.style.content}
-          data={this.state.locations}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              style={SearchStyles(this.context).screen.style.cardBox}
-              onPress={() => {
-                this.props.navigation.navigate('Details', { location: JSON.stringify(item) });
-              }}
-            >
-              <CWCard
-                style={SearchStyles(this.context).weatherCard}
-                data={{
-                  city: item.name,
-                  state: item.state,
-                  country: item.country,
-                  degrees: item.conditions.weather.temp.cur,
-                  icon: item.conditions.weather.icon.raw,
+    if (this.state.locations && this.state.results === true) {
+      return (
+        <View style={SearchStyles(this.context).screen.style.container}>
+          <FlatList
+            style={SearchStyles(this.context).screen.style.content}
+            data={this.state.locations}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                style={SearchStyles(this.context).screen.style.cardBox}
+                onPress={() => {
+                  this.props.navigation.navigate('Details', { location: JSON.stringify(item) });
                 }}
-              />
-            </TouchableOpacity>
-          )}
-        />
-      </View>
-    );
+              >
+                <CWCard
+                  style={SearchStyles(this.context).weatherCard}
+                  data={{
+                    city: item.name,
+                    state: item.state,
+                    country: item.country,
+                    degrees: item.conditions.weather.temp.cur,
+                    icon: item.conditions.weather.icon.raw,
+                  }}
+                />
+              </TouchableOpacity>
+            )}
+          />
+        </View>
+      );
+    } else if (this.state.locations && this.state.results === false) {
+      return (
+        <View style={SearchStyles(this.context).screen.style.loadingBox}>
+          <Text style={SearchStyles(this.context).screen.style.text}>No results</Text>
+        </View>
+      );
+    } else {
+      return (
+        <View style={SearchStyles(this.context).screen.style.loadingBox}>
+          <ActivityIndicator size={'large'} color={this.context.colors.loading} />
+        </View>
+      );
+    }
   }
 }

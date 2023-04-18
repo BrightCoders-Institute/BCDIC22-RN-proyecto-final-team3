@@ -11,4 +11,5 @@ export type ISearchState = {
   events: {
     focus: () => void;
   };
+  results?: boolean;
 };

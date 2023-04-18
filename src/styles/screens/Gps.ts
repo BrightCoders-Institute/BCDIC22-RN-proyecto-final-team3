@@ -25,6 +25,11 @@ export default (context: IThemeContext) => {
           paddingBottom: 15,
           paddingTop: 15,
         },
+        loadingBox: {
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
       }),
     },
     weatherDetails: {
