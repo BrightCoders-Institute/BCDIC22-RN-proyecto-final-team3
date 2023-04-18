@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Svg, { Circle, G, Text as SVGText, Polygon } from 'react-native-svg';
-import { ICWInfoProps } from '../types/components/CWInfo';
+import { ICWWindProps } from '../types/components/CWWind';
 
-export default class CWWind extends Component<ICWInfoProps> {
-  constructor(props: ICWInfoProps) {
+export default class CWWind extends Component<ICWWindProps> {
+  constructor(props: ICWWindProps) {
     super(props);
   }
 
-  toTextualDescription(degree: number) {
+  windDirection(degree: number) {
     if (degree > 337.5) return 'Northerly';
     if (degree > 292.5) return 'North Westerly';
     if (degree > 247.5) return 'Westerly';
@@ -17,31 +17,17 @@ export default class CWWind extends Component<ICWInfoProps> {
     if (degree > 157.5) return 'Southerly';
     if (degree > 122.5) return 'South Easterly';
     if (degree > 67.5) return 'Easterly';
-    if (degree > 22.5) {
-      return 'North Easterly';
-    }
+    if (degree > 22.5) return 'North Easterly';
     return 'Northerly';
   }
 
   render() {
     return (
-      <View
-        style={{
-          borderRadius: 8,
-          backgroundColor: '#AFDCF8',
-          paddingVertical: 10,
-        }}
-      >
-        <View style={{ marginVertical: 5 }}>
-          <Text style={{ textAlign: 'center' }}>WIND STATE</Text>
-
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-evenly',
-            }}
-          >
-            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+      <View style={this.props.style?.container}>
+        <View style={this.props.style?.content}>
+          <Text style={[this.props.style?.textCenter, this.props.style?.titleText]}>WIND STATE</Text>
+          <View style={this.props.style?.elements}>
+            <View style={this.props.style?.compassContainer}>
               <Svg height='65' width='100' viewBox='0 0 508 508'>
                 <G>
                   <Circle cx='254' cy='254' r='254' fill='#324A5E' />
@@ -66,15 +52,16 @@ export default class CWWind extends Component<ICWInfoProps> {
                   <Circle cx='254' cy='254' r='21.2' fill='#FFD05B' />
                 </G>
               </Svg>
-              <View style={{ marginTop: 5 }}>
-                <Text> {this.toTextualDescription(this.props.data.weather.wind.deg)}</Text>
+              <View style={this.props.style?.compassTextContainer}>
+                <Text style={this.props.style?.compassText}>
+                  {this.windDirection(this.props.data.weather.wind.deg)}
+                </Text>
               </View>
             </View>
-
-            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-              <MaterialCommunityIcons name='tailwind' size={60} color='black' />
-              <View style={{ marginTop: 8 }}>
-                <Text>{this.props.data.weather.wind.speed} KM/H</Text>
+            <View style={this.props.style?.windContainer}>
+              <MaterialCommunityIcons name='tailwind' size={60} color={this.props.style?.windIcon.color} />
+              <View style={this.props.style?.windTextContainer}>
+                <Text style={this.props.style?.windText}>{this.props.data.weather.wind.speed} KM/H</Text>
               </View>
             </View>
           </View>
