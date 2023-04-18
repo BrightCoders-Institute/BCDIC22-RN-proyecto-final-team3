@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View } from 'react-native';
+import { ActivityIndicator, ScrollView, View } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import OWMA from '../clients/OWMA';
@@ -73,6 +73,8 @@ export default class Details extends Component<IDetailsProps, IDetailsState> {
     this.props.navigation.setOptions({
       headerRight: () => (
         <CButton
+          loading={this.state.location?.conditions && this.state.location.forecast ? false : true}
+          disabled={this.state.location?.conditions && this.state.location.forecast ? false : true}
           onPress={async () => {
             this.setState({ following: !active });
             this.setUpAddButton(!active);
@@ -103,6 +105,7 @@ export default class Details extends Component<IDetailsProps, IDetailsState> {
   };
 
   async componentDidMount() {
+    this.setUpAddButton(this.state.following);
     await this.getLocationConditions();
     await this.checkFollowing();
     this.setUpAddButton(this.state.following);
@@ -134,6 +137,12 @@ export default class Details extends Component<IDetailsProps, IDetailsState> {
             </View>
           </View>
         </ScrollView>
+      );
+    } else {
+      return (
+        <View style={DetailsStyles(this.context).screen.style.loadingBox}>
+          <ActivityIndicator size={'large'} color={this.context.colors.loading} />
+        </View>
       );
     }
   }

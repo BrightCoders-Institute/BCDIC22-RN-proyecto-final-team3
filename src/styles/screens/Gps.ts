@@ -26,6 +26,11 @@ export default (context: IThemeContext) => {
         contendInfo: {
           marginVertical: 5,
         },
+        loadingBox: {
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
       }),
     },
     weatherDetails: {

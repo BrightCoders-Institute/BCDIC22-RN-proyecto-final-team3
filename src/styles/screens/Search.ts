@@ -13,6 +13,14 @@ export default (context: IThemeContext) => {
         },
         content: {},
         cardBox: { marginVertical: 5, marginHorizontal: 20 },
+        loadingBox: {
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
+        text: {
+          color: context.colors.text,
+        },
       }),
     },
     weatherCard: {
