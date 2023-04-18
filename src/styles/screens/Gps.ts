@@ -17,6 +17,7 @@ export default (context: IThemeContext) => {
         content: {
           marginHorizontal: 20,
           paddingTop: 15,
+          paddingBottom: 15,
         },
         text: {
           color: context.colors.text,

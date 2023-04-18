@@ -11,6 +11,7 @@ import GpsStyles from '../styles/screens/Gps';
 import ThemeContext from '../theme/context';
 import { IGpsProps, IGpsState } from '../types/screens/Gps';
 import { IThemeContext } from '../types/theme/context';
+import CWWind from '../components/CWWind';
 
 export default class Gps extends Component<IGpsProps, IGpsState> {
   static contextType = ThemeContext;
@@ -244,6 +245,9 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
               />
               <View style={GpsStyles(this.context).screen.style.contendInfo}>
                 <CWInfo data={this.state.conditions.current} style={GpsStyles(this.context).weatherInfo} />
+              </View>
+              <View style={{ paddingBottom: 15 }}>
+                <CWWind data={this.state.conditions.current} />
               </View>
               <View>
                 <CWDetails data={this.state.conditions.forecast} style={GpsStyles(this.context).weatherDetails} />
