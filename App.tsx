@@ -35,7 +35,8 @@ export default class App extends Component<object, IAppState> {
     return auth().onAuthStateChanged(async (user) => {
       if (user) {
         const querySnapshot = await firestore().collection('users').doc(auth().currentUser?.uid).get();
-        EventRegister.emit('changeTheme', querySnapshot.data()?.settings.theme);
+        const theme = querySnapshot.data()?.settings.theme;
+        if (theme) EventRegister.emit('changeTheme', theme);
       }
     });
   };

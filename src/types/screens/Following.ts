@@ -7,5 +7,5 @@ export type IFollowingProps = NativeStackScreenProps<RootStackParamList, 'Follow
 
 export type IFollowingState = {
   search: string;
-  following: OWMALocationAndWeather[];
+  following?: OWMALocationAndWeather[];
 };
