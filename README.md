@@ -128,5 +128,5 @@ npm run test
 - [@arthurchina92](https://github.com/arthurchina92)
 - [@EliasCode79](https://github.com/EliasCode79)
 - [@IvanGodinez21](https://github.com/IvanGodinez21)
-- [@Matarratas777](https://github.com/Matarratas777)
+- [@InGerardo777](https://github.com/InGerardo777)
 - [@McFly1208](https://github.com/McFly1208)
