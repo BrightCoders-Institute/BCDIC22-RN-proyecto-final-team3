@@ -6,6 +6,7 @@ import OWMA from '../clients/OWMA';
 import CButton from '../components/CButton';
 import CWWidget from '../components/CWWidget';
 import CWInfo from '../components/CWInfo';
+import CWWind from '../components/CWWind';
 import CWDetails from '../components/CWDetails';
 import DetailsStyles from '../styles/screens/Details';
 import ThemeContext from '../theme/context';
@@ -115,18 +116,23 @@ export default class Details extends Component<IDetailsProps, IDetailsState> {
       return (
         <ScrollView style={DetailsStyles(this.context).screen.style.container}>
           <View style={DetailsStyles(this.context).screen.style.content}>
-            <CWWidget
-              style={DetailsStyles(this.context).weatherWidget}
-              data={{
-                location: this.state.location,
-                degrees: this.state.location.conditions.weather.temp.cur,
-                icon: this.state.location.conditions.weather.icon.raw,
-              }}
-            />
+            <View style={DetailsStyles(this.context).screen.style.contendInfo}>
+              <CWWidget
+                style={DetailsStyles(this.context).weatherWidget}
+                data={{
+                  location: this.state.location,
+                  degrees: this.state.location.conditions.weather.temp.cur,
+                  icon: this.state.location.conditions.weather.icon.raw,
+                }}
+              />
+            </View>
             <View style={DetailsStyles(this.context).screen.style.contendInfo}>
               <CWInfo data={this.state.location.conditions} style={DetailsStyles(this.context).weatherInfo} />
             </View>
-            <View>
+            <View style={DetailsStyles(this.context).screen.style.contendInfo}>
+              <CWWind data={this.state.location.conditions} style={DetailsStyles(this.context).weatherWind} />
+            </View>
+            <View style={DetailsStyles(this.context).screen.style.contendInfo}>
               <CWDetails data={this.state.location.forecast} style={DetailsStyles(this.context).weatherDetails} />
             </View>
           </View>

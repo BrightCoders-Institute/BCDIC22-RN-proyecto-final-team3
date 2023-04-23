@@ -18,7 +18,7 @@ export default class LogIn extends Component<IFollowingProps, IFollowingState> {
     super(props);
     this.state = {
       search: '',
-      following: [],
+      following: undefined,
     };
   }
 
@@ -46,7 +46,7 @@ export default class LogIn extends Component<IFollowingProps, IFollowingState> {
   }
 
   render() {
-    if (this.state.following.length) {
+    if (this.state.following && this.state.following.length >= 0) {
       return (
         <View style={FollowingStyles(this.context).screen.style.container}>
           <FlatList

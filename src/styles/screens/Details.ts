@@ -7,6 +7,8 @@ import CWInfoComponent from '../../components/CWInfo';
 import CWInfoStyle from '../components/CWInfo';
 import CWWidgetComponent from '../../components/CWWidget';
 import CWWidgetStyle from '../components/CWWidget';
+import CWWindComponent from '../../components/CWWind';
+import CWWindStyle from '../components/CWWind';
 import { IThemeContext } from '../../types/theme/context';
 
 export default (context: IThemeContext) => {
@@ -18,14 +20,13 @@ export default (context: IThemeContext) => {
         },
         content: {
           marginHorizontal: 20,
-          paddingTop: 15,
+          marginVertical: 15,
         },
         text: {
           color: context.colors.text,
         },
         contendInfo: {
-          paddingBottom: 15,
-          paddingTop: 15,
+          marginVertical: 5,
         },
         loadingBox: {
           flex: 1,
@@ -61,5 +62,8 @@ export default (context: IThemeContext) => {
     weatherWidget: {
       ...CWWidgetStyle(context),
     } as CWWidgetComponent['props']['style'],
+    weatherWind: {
+      ...CWWindStyle(context),
+    } as CWWindComponent['props']['style'],
   };
 };

@@ -11,6 +11,7 @@ import GpsStyles from '../styles/screens/Gps';
 import ThemeContext from '../theme/context';
 import { IGpsProps, IGpsState } from '../types/screens/Gps';
 import { IThemeContext } from '../types/theme/context';
+import CWWind from '../components/CWWind';
 
 export default class Gps extends Component<IGpsProps, IGpsState> {
   static contextType = ThemeContext;
@@ -233,18 +234,23 @@ export default class Gps extends Component<IGpsProps, IGpsState> {
       return (
         <ScrollView style={GpsStyles(this.context).screen.style.container}>
           <View style={GpsStyles(this.context).screen.style.content}>
-            <CWWidget
-              style={GpsStyles(this.context).weatherWidget}
-              data={{
-                location: this.state.location.data.city,
-                degrees: this.state.conditions.current.weather.temp.cur,
-                icon: this.state.conditions.current.weather.icon.raw,
-              }}
-            />
+            <View style={GpsStyles(this.context).screen.style.contendInfo}>
+              <CWWidget
+                style={GpsStyles(this.context).weatherWidget}
+                data={{
+                  location: this.state.location.data.city,
+                  degrees: this.state.conditions.current.weather.temp.cur,
+                  icon: this.state.conditions.current.weather.icon.raw,
+                }}
+              />
+            </View>
             <View style={GpsStyles(this.context).screen.style.contendInfo}>
               <CWInfo data={this.state.conditions.current} style={GpsStyles(this.context).weatherInfo} />
             </View>
-            <View>
+            <View style={GpsStyles(this.context).screen.style.contendInfo}>
+              <CWWind data={this.state.conditions.current} style={GpsStyles(this.context).weatherWind} />
+            </View>
+            <View style={GpsStyles(this.context).screen.style.contendInfo}>
               <CWDetails data={this.state.conditions.forecast} style={GpsStyles(this.context).weatherDetails} />
             </View>
           </View>
