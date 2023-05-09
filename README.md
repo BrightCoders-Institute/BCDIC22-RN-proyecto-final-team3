@@ -69,6 +69,8 @@ The WWU app is very easy to use. Open the app, enable location and then you will
   </table>
 </details>
 
+### [Demo](demo/preview.mp4)
+
 ## Usage
 
 ### Installing software requirements
